@@ -1,0 +1,32 @@
+.nav-Menu{
+    display: inline-flex;
+    padding: 6px px;
+align-items: center;
+gap: 3px;
+
+}
+.nav-Menu-Item{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+   
+    color:#7C8DB0
+}
+.nav-Menu-Button {
+    padding: 10px 15px; 
+    background-color:white; 
+    color:#7C8DB0; 
+    border: none;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-Menu-Button:hover {
+    background-color: #9D8CF2; 
+    color:white;
+}

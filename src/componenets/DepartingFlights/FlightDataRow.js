@@ -3,13 +3,13 @@ import './FlightDataRow.css';
 import SubmitButton from '../Buttons/DepartingSubmitButton'
 
 import DepartingPage from '../../Pages/DepatingPage';
-const FlightDataRow = () => {
+const FlightDataRow = ({FlyData}) => {
  
   return (
     <>
     <div className='FlightRow'>
-        <DepartingPage/>
-        <SubmitButton/>
+        <DepartingPage flightData={FlyData}/>
+        <SubmitButton/> 
     
     </div>
     </>

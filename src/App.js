@@ -12,6 +12,7 @@ import DepPage from './Pages/DepPage'
 import DepRet from './Pages/DepReturnPage'
 import SeatSelector from './Pages/SeatSelectorPage/SeatBooking';
 import SeatSelectorHeader from './componenets/SeatSelectorHeader';
+import UserRegister from './Pages/LoginPage/UserRegistration';
 function App() {
   return (
     <div className="App">

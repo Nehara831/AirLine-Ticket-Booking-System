@@ -9,8 +9,8 @@ function DepReturnPage() {
     <Depart/>
 
       <div className='Label'>Returning Flights</div>
-        <Depart/>
-        
+       
+      <Depart/>
        
         </div></>
       

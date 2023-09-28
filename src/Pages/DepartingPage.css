@@ -35,9 +35,9 @@
     }
     
     .TableFlightListVersionA {
-        width: 80%;
-        height: 40%;
-        padding: 16px;
+        width: 90%;
+        height: 90%;
+        padding: 10px;
         background: white;
         border-radius: 8px;
         border: 1px #F6F6FE solid;
@@ -45,6 +45,7 @@
         justify-content: flex-start;
         align-items: flex-start;
         display: inline-flex;
+       
       }
       
       .FlightDataRow {

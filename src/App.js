@@ -10,7 +10,8 @@ import DepatingPage from './Pages/DepatingPage';
 import FlightDataRow from './componenets/DepartingFlights/FlightDataRow'
 import DepPage from './Pages/DepPage'
 import DepRet from './Pages/DepReturnPage'
-
+import SeatSelector from './Pages/SeatSelectorPage/SeatBooking';
+import SeatSelectorHeader from './componenets/SeatSelectorHeader';
 function App() {
   return (
     <div className="App">

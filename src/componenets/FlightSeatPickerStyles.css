@@ -1,0 +1,7 @@
+/* styles.css */
+.square-button {
+    width: 22px !important;
+    height: 22px !important;
+    padding: 0 !important;
+    min-width: 22px !important;
+}

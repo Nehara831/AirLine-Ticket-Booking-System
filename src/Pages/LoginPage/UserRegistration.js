@@ -147,9 +147,9 @@ const FormDisabledDemo = () => {
       </Form>
      
       </div>
-      <div className='Container'>
-        hi
-      </div>
+      <div className='Container' style={{ backgroundImage: `url(${image})` }} >
+
+</div>
       {/* <img src='../asserts/Suitcases.png' alt="Your Image" /> */}
       </div>
     </>

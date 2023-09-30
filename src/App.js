@@ -14,11 +14,12 @@ import SeatSelector from './Pages/SeatSelectorPage/SeatBooking';
 import SeatSelectorHeader from './componenets/SeatSelectorHeader';
 import UserRegister from './Pages/LoginPage/UserRegistration';
 import RegChat from './Pages/LoginPage/RegChat'
+import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 function App() {
   return (
     <div className="App">
       
-    <RegChat/>
+    <SeatBookingPage/>
     </div>
   );
 }

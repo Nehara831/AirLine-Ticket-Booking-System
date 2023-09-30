@@ -84,7 +84,8 @@ import React, { useState } from 'react';
 
 import { PlusOutlined } from '@ant-design/icons';
 import './UserRegistration.css'
-
+import NavigationHeader from '../../componenets/NavigationHeaderFolder/NavigationHeader';
+import image from '../../asserts/Bag.png'
 import {
   Button,
   Cascader,
@@ -116,8 +117,10 @@ const FormDisabledDemo = () => {
 
   return (
     <>
+   <NavigationHeader/>
+   <div className='Imag'>
     <div className='Form'>
-      
+    <div className='SignUplabel'> Sign Up Now!</div>
       <Form
         labelCol={{ span: 14 }}
         wrapperCol={{ span: 25 }}
@@ -142,6 +145,12 @@ const FormDisabledDemo = () => {
           <Button>Create an Account</Button>
         </Form.Item>
       </Form>
+     
+      </div>
+      <div className='Container'>
+        hi
+      </div>
+      {/* <img src='../asserts/Suitcases.png' alt="Your Image" /> */}
       </div>
     </>
     

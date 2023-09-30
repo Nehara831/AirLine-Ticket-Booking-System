@@ -13,11 +13,12 @@ import DepRet from './Pages/DepReturnPage'
 import SeatSelector from './Pages/SeatSelectorPage/SeatBooking';
 import SeatSelectorHeader from './componenets/SeatSelectorHeader';
 import UserRegister from './Pages/LoginPage/UserRegistration';
+import RegChat from './Pages/LoginPage/RegChat'
 function App() {
   return (
     <div className="App">
       
-    <UserRegister/>
+    <RegChat/>
     </div>
   );
 }

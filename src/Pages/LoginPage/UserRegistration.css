@@ -22,12 +22,35 @@
   }
 
   .Form{
-    height: 80%;
-    width:400px;
-    padding-left: 30px;
-    padding-top: 30px;
+    height: 650px;
+    width:70%;
+    padding-left: 130px;
+    padding-top: 40px;
     padding-bottom: 30px;
     padding-right: 20px;
     background-color:aqua ;
+    flex-direction: row;
 
   }
+  .SignUplabel{
+  
+color: '#605DEC';
+ font-size: 24;
+ font-family: 'Nunito Sans';
+ font-weight: '700';
+ word-wrap: 'break-word';
+ padding-bottom: 20px;
+  }
+.Imag{
+  flex-direction: row;
+  display: inline-flex;
+
+  width: 80%;
+ 
+ 
+  
+}
+.Container{
+  background-image: url('../../asserts/Suitcases.png');
+  
+}

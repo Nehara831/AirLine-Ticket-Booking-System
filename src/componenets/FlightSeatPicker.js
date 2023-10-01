@@ -89,7 +89,7 @@ const FlightSeatPicker = () => {
 
   return (
     <div style={{ height: '100vh', overflowY: 'auto' }}>
-      <h2>Select your seat:</h2>
+     
       <Grid container spacing={1} justifyContent="center">
         {renderSeatGrid()}
       </Grid>

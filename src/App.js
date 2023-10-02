@@ -16,12 +16,18 @@ import UserRegister from './Pages/LoginPage/UserRegistration';
 import RegChat from './Pages/LoginPage/RegChat'
 import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 import NewMainPage from './Pages/NewMainView/NewMainView';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <div className="App">
-      
-    <NewMainPage/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<NewMainPage />} exact />
+          <Route path="/available-flights" element={<DepRet />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

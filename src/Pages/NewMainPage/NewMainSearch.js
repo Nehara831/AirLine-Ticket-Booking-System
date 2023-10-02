@@ -1,5 +1,5 @@
 // Import necessary components from Ant Design
-import { Select, DatePicker, InputNumber } from 'antd';
+import { Button, Select, DatePicker, InputNumber } from 'antd';
 import React, { useState } from 'react';
 import './SearchPanel.css';
 import DepartingIcon from './DepartingIcon';
@@ -7,7 +7,7 @@ import ArrivingIcon from './ArrivingIcon';
 import PersonIcon from './PersonIcon'
 const { Option } = Select;
 
-function SearchPanel() {
+function SearchPanel({ onSearch }) {
   const [departureAirport, setDepartureAirport] = useState(null);
   const [arrivalAirport, setArrivalAirport] = useState(null);
   const [departureDate, setDepartureDate] = useState(null);
@@ -15,6 +15,7 @@ function SearchPanel() {
   const [passengers, setPassengers] = useState(1);
 
   const airports = ['New York (JFK)', 'Los Angeles (LAX)', 'Chicago (ORD)', 'San Francisco (SFO)', 'Miami (MIA)'];
+// In the component where handleClick is defined
 
   return (
     <div className="search-panel">
@@ -88,8 +89,12 @@ function SearchPanel() {
             style={{ marginLeft: '8px' }}  // Add some spacing between the icon and the input
           />
         </div>
+        <div className="section search-button">
+       
       </div>
-    
+      
+      </div>
+      <Button type="primary" onClick={onSearch}>Search</Button>
     </div>
   );
 }

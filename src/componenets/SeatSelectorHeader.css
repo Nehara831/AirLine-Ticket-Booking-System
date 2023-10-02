@@ -78,7 +78,7 @@
 .Property1InactiveProperty2Dark {
    
     background: #27273F;
-    width: 300px;
+    width: 400px;
     height: 100%;
     padding-left: 24px;
     padding-right: 24px;
@@ -118,7 +118,7 @@
 
   /* Define a class selector */
 .Property1ActiveProperty2Light {
-    width: 30%;
+    width: 400px;
     height: 100%;
     flex-direction: column;
     justify-content: flex-start;

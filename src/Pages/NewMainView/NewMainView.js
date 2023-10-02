@@ -10,10 +10,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Perform any necessary search logic here
-    // ...
 
-    // Navigate to the Available Flights page
     navigate('/available-flights');
   };
   return (
@@ -24,7 +21,8 @@ function LoginPage() {
        <NavigationPanel/>
       </nav>
       <div className="background-image">
-      <SearchPanel onSearch={handleSearch} />      </div>
+      <SearchPanel onSearch={handleSearch} />      
+      </div>
     </div>
   );
 }

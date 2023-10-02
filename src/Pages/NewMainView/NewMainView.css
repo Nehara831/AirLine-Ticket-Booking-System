@@ -11,7 +11,7 @@
   
   .background-image {
     flex: 1;  /* Fill the remaining height */
-    background-image: url('../../asserts/Hero4.png');
+    background-image: url('../../asserts/MainViewBackground.jpeg');
     background-size: cover;
     background-position: center;
     display: flex;

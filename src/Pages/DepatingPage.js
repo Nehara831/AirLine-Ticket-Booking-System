@@ -1,11 +1,17 @@
 
 
 import './DepartingPage.css';
-
-
+import SubmitButton from '../componenets/Buttons/DepartingSubmitButton'
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
 const DepartingPage=({ flightData })=>{
 
- 
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+   
+    navigate(`/seatSelector/${flightData.flightId}`);
+  };
       return (
         <div className="FlightDataRow">
           <div className="DataRowCombined">
@@ -39,6 +45,13 @@ const DepartingPage=({ flightData })=>{
               </div>
             </div>
           </div>
+          <Button 
+        type="primary" style={{background: '#605DEC'}}
+        onClick={handleButtonClick}
+      >
+        Submit
+      </Button >
+    
         </div>
       );
     }

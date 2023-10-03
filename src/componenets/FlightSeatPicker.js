@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
 import { Button, Typography } from '@mui/material';
-import './FlightSeatPickerStyles.css'
-const FlightSeatPicker = () => {
+import './FlightSeatPickerStyles.css';
+import { useParams } from 'react-router-dom';
+// { selectedFlight, user } is passes 
+const FlightSeatPicker = ({ selectedFlight, user }) => {
+  const { flightId } = useParams(); 
+  const [availableSeats, setAvailableSeats] = useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
+  useEffect(() => {
+    // Create a function to fetch available seats data using the flight ID
+    const fetchAvailableSeats = async () => {
+      try {
+        // Make an API request to fetch available seats data based on flightId
+        const response = await fetch(`/api/available-seats/${flightId}`); // Replace with your actual API endpoint
+        if (response.ok) {
+          const data = await response.json();
+          setAvailableSeats(data);
+        } else {
+          // Handle error if the request fails
+          console.error('Failed to fetch available seats data');
+        }
+      } catch (error) {
+        console.error('Error fetching available seats data:', error);
+      }
+    };
+
+    // Call the fetchAvailableSeats function to fetch data
+    fetchAvailableSeats();
+  }, [flightId]);
 
   const handleSeatToggle = (seatNumber) => {
     setSelectedSeats((prevSelectedSeats) => {

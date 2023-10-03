@@ -30,7 +30,14 @@
     width: 100%; 
     GAP:50px; /* Ensures they take the full width of the parent container */
 }
-    
+.DataRowSecondary {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%; 
+    GAP:33px; /* Ensures they take the full width of the parent container */
+}
     .TableFlightListVersionA {
         width: 90%;
         height: 80%;
@@ -57,7 +64,7 @@
         align-items: center;
         gap: 1px;
         display: inline-flex;
-        width:80%;
+        width:90%;
         height: 100px;
       }
       
@@ -133,3 +140,15 @@
         width: 33%; /* On even larger screens, take up 33% of the parent container's width */
     }
 }
+.Buttonstyle{
+    width: '90px';
+    height: '30px';
+    ;
+    border-radius: '4px';
+    overflow: 'hidden';
+    display: 'flex';
+    justify-content: 'flex-start';
+    align-items: 'center';
+    gap: 'px';
+    border-color: '#1513A0'; 
+  }

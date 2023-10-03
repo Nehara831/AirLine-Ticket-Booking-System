@@ -20,8 +20,9 @@
 //   export default DepReturnPage;
 
 
-import React, { useState, useEffect } from 'react';import Depart from './DepPage';
-import './DepReturnPage.css';
+import React, { useState, useEffect } from 'react';
+import Depart from './DepPage';
+import './DepatingPage';
 
 import SeatHeader from '../componenets/SeatSelectorHeader';
 

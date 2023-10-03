@@ -9,8 +9,7 @@ const FlightDataRow = ({FlyData}) => {
     <>
     <div className='FlightRow'>
         <DepartingPage flightData={FlyData}/>
-        <SubmitButton/> 
-    
+       
     </div>
     </>
     

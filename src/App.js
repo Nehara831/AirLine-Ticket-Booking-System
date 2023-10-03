@@ -25,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NewMainPage />} exact />
           <Route path="/available-flights" element={<DepRet />} />
+          <Route path="/seatSelector"  element={<SeatBookingPage/>} />
         </Routes>
       </div>
     </Router>

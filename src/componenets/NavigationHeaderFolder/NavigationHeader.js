@@ -1,7 +1,7 @@
 import React from 'react'
 import './NavigatorHeader.css'
-import NavMenu from 'C:/Projects/AirLine-Ticket-Booking-Application/booking/src/componenets/NavigationMenu/Nav-Menu'
-const NavigationHeader=()=> {
+import NavMenu from '../NavigationMenu/Nav-Menu'
+const NavigationHeader=({clicKSignInButton,clicKSignUpButton})=> {
     return (
         <div className="nav-header">
             <div className="nav-textItem">
@@ -9,7 +9,7 @@ const NavigationHeader=()=> {
             </div>
             </div>
             <div className="nav-menu">
-                <NavMenu/>
+                <NavMenu clicKSignIn={clicKSignInButton} clicKSignUp={clicKSignUpButton}/>
                 
             </div>
         </div>

@@ -1,12 +1,23 @@
 // Import necessary components from 'antd'
 import { Form, Input, Button, DatePicker, Radio, Select, Checkbox } from 'antd';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RegChat.css'
 import NavigationHeader from '../../componenets/NavigationHeaderFolder/NavigationHeader';
 
-const { Option } = Select;
 
-const PassengerInformationForm = () => {
+
+
+
+
+const PassengerInformationForm = (flightData) => {
+  const { Option } = Select;
+const navigate = useNavigate();
+  const handleButtonClick = () => {
+ 
+   
+   navigate(`/seatSelector/${flightData.flightId}`);
+  };
   // Function to handle form submission
   const onFinish = (values) => {
     console.log('Received values:', values);
@@ -121,9 +132,12 @@ const PassengerInformationForm = () => {
           <Button type="primary" htmlType="submit" className="button">
             Save   
           </Button>
-          <Button className={`button ${"button-spacing"}`}>
-            Select Seats
-          </Button>
+          <Button 
+  className={`button ${"button-spacing"}`} 
+  onClick={handleButtonClick}
+>
+  Select Seats
+</Button>
         </Form.Item>
       </Form>
     </div>

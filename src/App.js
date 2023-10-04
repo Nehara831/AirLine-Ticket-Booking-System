@@ -23,9 +23,12 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<NewMainPage />} exact />
+          <Route path="/" element={<NewMainPage/>} exact />
           <Route path="/available-flights" element={<DepRet />} />
-          <Route path="/seatSelector"  element={<SeatBookingPage/>} />
+          <Route path="/seatSelector/:flightId"  element={<SeatBookingPage/>} />
+          <Route path="/passengerDetails"  element={<RegChat/>} />
+          <Route path="/userSignUp"  element={<UserRegister/>} />
+
         </Routes>
       </div>
     </Router>

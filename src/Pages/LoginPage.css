@@ -1,168 +1,69 @@
-.main{
-    width: 10%;
-    height: 30%;  
-    display: flex;
-    flex-direction :row;
-    background-color: white;
-    
-
-
+.login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #CBD4E6;
+  box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05), 0px 24px 60px 0px rgba(6, 47, 125, 0.05),
+    0px 2px 4px 0px rgba(7, 4, 146, 0.10);
+  width: 400px; /* Adjust width */
+  z-index: 2;
 }
 
-.Login{
-       
-    gap:14px;
-
-}
-.Nav{
-    
-    
-    height:60px;
-    
-    background-color:var(--true-white, #ffffff);
-    
+.BottomText-right-aligned {
+  color: #605DEC;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  margin-left: 35px;
+  margin-bottom: 24px; /* Adjust spacing */
 }
 
-
-
-.Bottom{
-    
-    height: 70%;    
-    background-color:var(--true-white, #ffffff);
-    padding: 2px 20px;
-    display: flex;
-    flex-direction: column;
-    gap:6px;
-    
-
-}
-.Bottom > *:not(:last-child) {
-    margin-bottom: 20px; 
+.TextShowBox {
+  font-size: 14px; /* Adjust text size */
+  color: #333;
+  margin-bottom: 16px; /* Adjust spacing */
 }
 
-.BottomText{
-    color: var(--grey-600, #575a65);
-   
-    font-size: 18px;
-    font-style: normal;
-    align-self: stretch;
-    line-height: normal;
-    font-weight: 700;
-    padding: px;
-    
+.LoginTextBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.TextShowBox{
-    width: 100%;
-    height:5%;
-    color: var(--grey-400, #7C8DB0);
-   
-    
-   
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-    justify-content: center; 
-    align-self: stretch;
-    
+/* Additional style for Inputs */
+.LoginTextBox .ant-input {
+  border-radius: 8px; /* Rounded edges */
 }
 
-  
-.Cancellation{
-    width:100%;
-    height:16px;
-    color: var(--grey-400, #515661);
-   
-
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    
-}
-.BackImage{
-    border-color: rgb(20, 22, 22);
-    width: 480px;
-    height:260px;
-    display: flex;
-    background-image: url('../asserts/Suitcases.png');
-   
-    background-size: contain; 
-   background-repeat: no-repeat;
-   
-    
-} 
-
-.Outer{
-    width: 22%;
-    height: 80%;
-    flex-shrink: 0;
-    background-color:var(--true-white, #ffffff);
-
-   
-    
-
-    display: inline-flex;
-    padding: 20px 10px 30px 40px;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-    border-radius: 12px;
-    border: 1px solid var(--grey-200, #CBD4E6);
-    /* background: var(--true-white, #FFF); */
-    box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05), 0px 24px 60px 0px rgba(6, 47, 125, 0.05), 0px 2px 4px 0px rgba(7, 4, 146, 0.10);
-
-}
 .CheckboxContainer {
-    display: flex;
-    align-self:stretch;
-    margin-top: 10px;
+  display: flex;
+  align-self: stretch;
+  margin-top: 10px;
+  margin-bottom: 16px; /* Adjust spacing */
 }
 
 .CheckboxContainer input[type='checkbox'] {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .CheckboxContainer label {
-    font-size: 13px;
-    color: var(--grey-400,#605DEC);
+  font-size: 13px;
+  color: #605DEC;
+}
 
-   
+.Button .ant-btn {
+  border-radius: 8px; /* Rounded edges */
+  font-size: 14px;
+  
+  text-align: center;
 }
 .Button{
-    display: flex;
-height: 20px;
-padding: 8px 2px 8px 2px;
-align-items: center;
-width:90%;
-height: 15px;;
-gap: 8px;
-flex-shrink: 0;
-align-self: stretch;
-border-radius: 4px;
-background: var(--purple-blue, #605DEC);
-}
-.ButtonText{
-    flex: 1 0 0;
-    color: var(--grey-100, #FAFAFA);
-text-align: center;
-
-
-
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-
-}
-.LoginTextBox{
-    width:100%;
-    height:100%;
-    gap:8px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 10%;
-
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;}

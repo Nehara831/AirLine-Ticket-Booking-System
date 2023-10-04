@@ -9,8 +9,9 @@ const DepartingPage=({ flightData })=>{
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
+    navigate(`/passengerDetails`);
    
-    navigate(`/seatSelector/${flightData.flightId}`);
+  
   };
       return (
         <div className="FlightDataRow">

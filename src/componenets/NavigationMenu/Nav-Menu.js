@@ -1,6 +1,6 @@
 import React from 'react'
 import './Nav-Menu.css'
-const NavigationMenu=()=>{
+const NavigationMenu=({clicKSignIn,clicKSignUp})=>{
     return(
         <div class="nav-Menu"> 
         <div class="nav-Menu-Item">
@@ -13,10 +13,10 @@ const NavigationMenu=()=>{
             <button class="nav-Menu-Button">Packages</button>
         </div>
         <div class="nav-Menu-Item">
-            <button class="nav-Menu-Button">Sign In</button>
+            <button class="nav-Menu-Button" onClick={clicKSignIn}>Sign In</button>
         </div>
         <div class="nav-Menu-Item">
-            <button class="nav-Menu-Button">Sign Up</button>
+            <button class="nav-Menu-Button" onClick={clicKSignUp}>Sign Up</button>
         </div>
     </div>
     

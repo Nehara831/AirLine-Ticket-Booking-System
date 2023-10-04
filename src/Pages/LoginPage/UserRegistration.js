@@ -85,43 +85,51 @@ import React, { useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
 import './UserRegistration.css'
 import NavigationHeader from '../../componenets/NavigationHeaderFolder/NavigationHeader';
-import image from '../../asserts/Bag.png'
+import image from '../../asserts/Bag.png';
+import axios from 'axios';
+
 import {
   Button,
-  Cascader,
-  Checkbox,
   DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
-  Select,
-  Slider,
-  Switch,
-  TreeSelect,
-  Upload,
+  message
+ 
 } from 'antd';
 
-const { RangePicker } = DatePicker;
-const { TextArea } = Input;
 
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
+
+
 
 const FormDisabledDemo = () => {
-  const [componentDisabled, setComponentDisabled] = useState(true);
-
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+});
+const handleChange = (e) => {
+  setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+  });
+};
+const handleSubmit = async () => {
+  try {
+      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', formData);
+      message.success('Registration successful!');
+      // You may redirect the user or clear the form here
+  } catch (error) {
+      message.error('Registration failed. Please try again.');
+  }
+};
   return (
     <>
    <NavigationHeader/>
    <div className='Imag'>
     <div className='Form'>
     <div className='SignUplabel'> Sign Up Now!</div>
-      <Form
+      <Form onFinish={handleSubmit}
         labelCol={{ span: 14 }}
         wrapperCol={{ span: 25 }}
         layout="vertical"
@@ -129,21 +137,21 @@ const FormDisabledDemo = () => {
         style={{ maxWidth: 600 }}
       >
        
-        <Form.Item label="First Name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Last Name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Email Address">
-          <Input />
-        </Form.Item>
-        <Form.Item label="PassWord">
-          <Input />
-        </Form.Item>
-        <Form.Item >
-          <Button>Create an Account</Button>
-        </Form.Item>
+       <Form.Item label="First Name">
+                <Input name="firstName" value={formData.firstName} onChange={handleChange} />
+            </Form.Item>
+            <Form.Item label="Last Name">
+                <Input name="lastName" value={formData.lastName} onChange={handleChange} />
+            </Form.Item>
+            <Form.Item label="Email Address">
+                <Input name="email" value={formData.email} onChange={handleChange} />
+            </Form.Item>
+            <Form.Item label="Password">
+                <Input.Password name="password" value={formData.password} onChange={handleChange} />
+            </Form.Item>
+            <Form.Item>
+                <Button type="primary" htmlType="submit">Create an Account</Button>
+            </Form.Item>
       </Form>
      
       </div>

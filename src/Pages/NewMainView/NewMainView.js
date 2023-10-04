@@ -11,7 +11,7 @@ function LoginPage() {
 
   
     const [isLoginVisible, setLoginVisible] = useState(false);
-    const [isSignUpVisible, setSignUpVisible] = useState(false);
+    
   
     const handleLoginClick = () => {
       setLoginVisible(true);
@@ -23,9 +23,7 @@ function LoginPage() {
       setLoginVisible(false);
     };
     ///////
-    const handleCloseSignUp = () => {
-      setSignUpVisible(false);
-    };
+  
   const navigate = useNavigate();
 
   const handleSearch = () => {

@@ -1,10 +1,37 @@
-import React from 'react'
+import React , { useState } from 'react'
 import './LoginPage.css';
-import { Input, Checkbox, Button } from 'antd';
+import { Input, Checkbox, Button ,message } from 'antd';
 
+import axios from 'axios';
 
 
 const Loginpage=({ onClose })=>{
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: '',
+});
+const handleChange = (e) => {
+  setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value
+  });
+};
+const handleLogin = async () => {
+  try {
+      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', credentials);
+      // Handle success
+      message.success('Login successful!');
+      // Save the token securely and/or manage the user session
+  } catch (error) {
+      // Handle error
+      message.error('Login failed. Please check your credentials.');
+  }
+ 
+};
+const handleButtonClick = () => {
+  handleLogin();
+  onClose();
+};
     return(
        <>
               <div className='login-modal'>
@@ -13,8 +40,12 @@ const Loginpage=({ onClose })=>{
                   Aero Lanka is totally free to use. Sign up using your email address or phone number below to get started.
                 </div>
                 <div className='LoginTextBox'>
-                  <Input placeholder="Email or Phone number" />
-                  <Input.Password placeholder="Password" />
+                  <Input  placeholder="Email or Phone number"  
+                  name="username" />
+                  <Input.Password  
+                  placeholder="Password" 
+                        name="password"
+                        onChange={handleChange}/>
                 </div>
           
                 <div className='CheckboxContainer'>
@@ -22,7 +53,8 @@ const Loginpage=({ onClose })=>{
                 </div>
           
                 <div className='Button' >
-                  <Button type="primary" onClick={onClose}>Login</Button>
+                  <Button type="primary" onClick={handleButtonClick}>Login</Button>
+                  
                 </div>
           
                

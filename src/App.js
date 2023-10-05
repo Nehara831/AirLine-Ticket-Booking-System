@@ -14,6 +14,8 @@ import SeatSelector from './Pages/SeatSelectorPage/SeatBooking';
 import SeatSelectorHeader from './componenets/SeatSelectorHeader';
 import UserRegister from './Pages/LoginPage/UserRegistration';
 import RegChat from './Pages/LoginPage/RegChat'
+import MultiplePassengers from './Pages/LoginPage/MultiplePassengers'
+
 import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 import NewMainPage from './Pages/NewMainView/NewMainView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -25,8 +27,8 @@ function App() {
         <Routes>
           <Route path="/" element={<NewMainPage/>} exact />
           <Route path="/available-flights" element={<DepRet />} />
-          <Route path="/seatSelector/:flightId"  element={<SeatBookingPage/>} />
-          <Route path="/passengerDetails"  element={<RegChat/>} />
+          <Route path="/seatSelector"  element={<SeatBookingPage/>} />
+          <Route path="/passengerDetails/:totalPassengers"  element={<MultiplePassengers/>} />
           <Route path="/userSignUp"  element={<UserRegister/>} />
 
         </Routes>

@@ -1,6 +1,6 @@
 // Import necessary components from 'antd'
 import { Form, Input, Button, DatePicker, Radio, Select, Checkbox } from 'antd';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegChat.css'
 import NavigationHeader from '../../componenets/NavigationHeaderFolder/NavigationHeader';
@@ -10,17 +10,25 @@ import NavigationHeader from '../../componenets/NavigationHeaderFolder/Navigatio
 
 
 
-const PassengerInformationForm = (flightData) => {
+const PassengerInformationForm = ({clearForm,flightData,onSubmit}) => {
+
+  const [form] = Form.useForm();  
   const { Option } = Select;
 const navigate = useNavigate();
   const handleButtonClick = () => {
  
    
-   navigate(`/seatSelector/${flightData.flightId}`);
+   navigate(`/seatSelector`);
   };
   // Function to handle form submission
   const onFinish = (values) => {
     console.log('Received values:', values);
+    
+  };
+
+  const handleFormSubmit = (values) => {
+    onSubmit(values);  // Call the onSubmit prop when the form is submitted
+    form.resetFields();  // Optionally reset the form immediately
   };
   const [areFieldsEnabled, setAreFieldsEnabled] = useState(false);
 
@@ -29,6 +37,10 @@ const navigate = useNavigate();
     setAreFieldsEnabled(e.target.checked);
   };
    const [passengerName, setPassengerName] = useState('John Doe');
+   
+   useEffect(() => {
+    form.resetFields();
+  }, [clearForm, form]);
 
   return (
     <div>
@@ -38,7 +50,7 @@ const navigate = useNavigate();
       {/* <NavigationHeader/> */}
       </div>
 
-      <Form layout="vertical" onFinish={onFinish} className="form-container">
+      <Form form={form} layout="vertical" onFinish={handleFormSubmit} className="form-container">
         <div>
         <h1 className='header11'>Passenger Information </h1>
         </div>
@@ -57,26 +69,26 @@ const navigate = useNavigate();
     </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox">
+    <Form.Item name="suffix" className="textbox">
         <Input placeholder="Suffix" />
     </Form.Item>
-    <Form.Item name="middleName" className="textbox">
+    <Form.Item name="dateOfBirth" className="textbox">
         <Input placeholder="Date of Birth" />
     </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox-middle">
+    <Form.Item name="email" className="textbox-middle">
         <Input placeholder="Email" />
     </Form.Item>
-    <Form.Item name="middleName" className="textbox">
+    <Form.Item name="contactNumber1" className="textbox">
         <Input placeholder="Contact Number 1" />
     </Form.Item>
-    <Form.Item name="middleName" className="textbox">
-        <Input placeholder="Contact Number 2" />
+    <Form.Item name="age" className="textbox">
+        <Input placeholder="Age" />
     </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox-large">
+    <Form.Item name="adress" className="textbox-large">
         <Input placeholder="Adress" />
     </Form.Item>
    

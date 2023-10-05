@@ -9,8 +9,8 @@ const DepartingPage=({ flightData })=>{
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate(`/passengerDetails`);
-   
+    const totalPassengers = 5;  // Assume 5 passengers as an example
+    navigate(`/passengerDetails/${totalPassengers}`);
   
   };
       return (
@@ -39,7 +39,7 @@ const DepartingPage=({ flightData })=>{
               </div>
           
               <div className="TextBox">
-                <div className="Label2">{flightData.transferTime} in {flightData.transferLocation}</div>
+                <div className="Label1">{flightData.arrivingTime}</div>
               </div>
               <div className="TextBox1">
                 <div className="Label2">{flightData.tripType}</div>

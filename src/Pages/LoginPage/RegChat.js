@@ -10,7 +10,7 @@ import NavigationHeader from '../../componenets/NavigationHeaderFolder/Navigatio
 
 
 
-const PassengerInformationForm = ({clearForm,flightData,onSubmit}) => {
+const PassengerInformationForm = ({clearForm,onSubmit}) => {
 
   const [form] = Form.useForm();  
   const { Option } = Select;

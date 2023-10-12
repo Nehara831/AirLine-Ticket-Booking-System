@@ -16,10 +16,12 @@ const handleChange = (e) => {
       [e.target.name]: e.target.value
   });
 };
-const handleLogin = async () => {
+const handleLogin = async (event) => {
+  event && event.preventDefault(); 
+  console.log(credentials); 
   try {
-      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', credentials);
-      // Handle success
+      const response = await axios.post('http://localhost:8080/users/login', credentials);
+          // Handle success
       message.success('Login successful!');
       // Save the token securely and/or manage the user session
   } catch (error) {
@@ -29,7 +31,7 @@ const handleLogin = async () => {
  
 };
 const handleButtonClick = () => {
-  handleLogin();
+ handleLogin();
   onClose();
 };
     return(
@@ -41,7 +43,8 @@ const handleButtonClick = () => {
                 </div>
                 <div className='LoginTextBox'>
                   <Input  placeholder="Email or Phone number"  
-                  name="username" />
+                  name="username"  
+                  onChange={handleChange}/>
                   <Input.Password  
                   placeholder="Password" 
                         name="password"
@@ -53,7 +56,7 @@ const handleButtonClick = () => {
                 </div>
           
                 <div className='Button' >
-                  <Button type="primary" onClick={handleButtonClick}>Login</Button>
+                  <Button type="primary" onClick={handleLogin}>Login</Button>
                   
                 </div>
           

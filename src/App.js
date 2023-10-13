@@ -19,14 +19,15 @@ import MultiplePassengers from './Pages/LoginPage/MultiplePassengers'
 import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 import NewMainPage from './Pages/NewMainView/NewMainView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { FlightProvider } from './Pages/NewMainView/UserContext';
 function App() {
   return (
-    <Router>
+    <FlightProvider>
+       <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<NewMainPage/>} exact />
-          <Route path="/available-flights" element={<DepRet />} />
+          <Route path="/flightSelect" element={<DepRet />} />
           <Route path="/seatSelector"  element={<SeatBookingPage/>} />
           <Route path="/passengerDetails/:totalPassengers"  element={<MultiplePassengers/>} />
           <Route path="/userSignUp"  element={<UserRegister/>} />
@@ -34,6 +35,10 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </FlightProvider>
+      
+   
+   
 
  
   );

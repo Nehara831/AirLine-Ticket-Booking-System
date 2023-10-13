@@ -1,11 +1,17 @@
 import React , { useState } from 'react'
+import {useFlight} from '../Pages/NewMainView/UserContext';
 import './LoginPage.css';
 import { Input, Checkbox, Button ,message } from 'antd';
+import { useContext } from 'react';
 
 import axios from 'axios';
 
 
 const Loginpage=({ onClose })=>{
+
+  const { userId, setUserId } = useFlight();
+
+  const [choice,setChoice]=useState(false);
   const [credentials, setCredentials] = useState({
     username: '',
     password: '',
@@ -23,7 +29,10 @@ const handleLogin = async (event) => {
       const response = await axios.post('http://localhost:8080/users/login', credentials);
           // Handle success
       message.success('Login successful!');
-      // Save the token securely and/or manage the user session
+      // Set userId in context
+      setUserId(response.data.userId);
+      
+      
   } catch (error) {
       // Handle error
       message.error('Login failed. Please check your credentials.');
@@ -34,13 +43,19 @@ const handleButtonClick = () => {
  handleLogin();
   onClose();
 };
+
+const handleCheckboxChange= () => {
+ setChoice(true);
+ };
     return(
        <>
               <div className='login-modal'>
                 <div className='BottomText-right-aligned'> Sign up for Aero Lanka</div>
                 <div className='TextShowBox'>
-                  Aero Lanka is totally free to use. Sign up using your email address or phone number below to get started.
+                <p>Aero Lanka is totally free to use.</p> 
+        <p>Sign up using your email address or phone number below to get started.</p>
                 </div>
+                
                 <div className='LoginTextBox'>
                   <Input  placeholder="Email or Phone number"  
                   name="username"  
@@ -52,11 +67,11 @@ const handleButtonClick = () => {
                 </div>
           
                 <div className='CheckboxContainer'>
-                  <Checkbox id='termsCheckbox'>I agree to the terms and conditions</Checkbox>
+                  <Checkbox id='termsCheckbox' onChange={handleCheckboxChange}>I agree to the terms and conditions</Checkbox>
                 </div>
           
                 <div className='Button' >
-                  <Button type="primary" onClick={handleLogin}>Login</Button>
+                  <Button type="primary" onClick={handleButtonClick} disabled={!choice}>Login</Button>
                   
                 </div>
           

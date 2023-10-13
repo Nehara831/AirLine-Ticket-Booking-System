@@ -1,102 +1,107 @@
-// Import necessary components from Ant Design
-import { Button, Select, DatePicker, InputNumber } from 'antd';
 import React, { useState } from 'react';
+import { Select, Button, InputNumber, DatePicker } from 'antd';
+import { FlightTakeoff, FlightLand, Person } from '@mui/icons-material';
+import axios from 'axios';
 import './SearchPanel.css';
-import DepartingIcon from './DepartingIcon';
-import ArrivingIcon from './ArrivingIcon';
-import PersonIcon from './PersonIcon'
+import { useNavigate } from 'react-router-dom';
+
 const { Option } = Select;
 
-function SearchPanel({ onSearch }) {
-  const [departureAirport, setDepartureAirport] = useState(null);
-  const [arrivalAirport, setArrivalAirport] = useState(null);
-  const [departureDate, setDepartureDate] = useState(null);
-  const [returnDate, setReturnDate] = useState(null);
-  const [passengers, setPassengers] = useState(1);
+function SearchPanel() {
 
-  const airports = ['New York (JFK)', 'Los Angeles (LAX)', 'Chicago (ORD)', 'San Francisco (SFO)', 'Miami (MIA)'];
-// In the component where handleClick is defined
+  const navigate = useNavigate();
 
-  return (
-    <div className="search-panel">
-      <div className="section departing">
-      <Select 
-          placeholder={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <DepartingIcon />
-              <span style={{ marginLeft: '8px' }}>From Where?</span>
-            </div>
-          } 
-          onChange={value => setDepartureAirport(value)}
-          value={
-            departureAirport ? (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <DepartingIcon />
-                <span style={{ marginLeft: '8px' }}>{departureAirport}</span>
-              </div>
-            ) : undefined
+    const [departureAirport, setDepartureAirport] = useState(null);
+    const [arrivalAirport, setArrivalAirport] = useState(null);
+    const [departureDate, setDepartureDate] = useState(null);
+    const [returnDate, setReturnDate] = useState(null);
+    const [passengers, setPassengers] = useState(1);
+
+    const airports = ['Los Angeles International Airport', 'John F. Kennedy International Airport', 'Chicago (ORD)', 'San Francisco (SFO)', 'Miami (MIA)'];
+
+    const handleSearch = async () => {
+      try {
+          // Ensure all fields are filled
+          if (!departureAirport || !arrivalAirport || !departureDate || !returnDate || !passengers) {
+              alert('Please fill all fields!');
+              return;
           }
-          dropdownMatchSelectWidth={false}
-        >
-          {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
-        </Select>
-      </div>
-      <div className="section arriving">
-      <Select 
-          placeholder={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <DepartingIcon />
-              <span style={{ marginLeft: '8px' }}>Where To?</span>
+
+          // Construct data to send to the backend
+          const data = {
+              departureAirport:departureAirport,
+              arrivalAirport:arrivalAirport,
+              departureDate: departureDate.format('YYYY-MM-DD'), // Format date as string
+              arrivalDate: returnDate.format('YYYY-MM-DD'), // Format date as string
+              passengers
+          };
+
+          // Send data to backend
+          const response = await axios.post('http://localhost:8080/flights/search', data);
+          
+          // Handle response (you might navigate, or do something with the response)
+          //console.log(response.data);
+
+          navigate('/flightSelect', { state: { flightData: response.data } });
+      } catch (error) {
+          console.error("An error occurred while sending data to the backend", error);
+          // Handle error (show error message, etc.)
+      }
+    
+  };
+
+
+
+    
+    return (
+        <div className="search-panel">
+            <div className="section">
+                <Select 
+                    prefixIcon={<FlightTakeoff />}
+                    placeholder="From Where?"
+                    onChange={setDepartureAirport}
+                    value={departureAirport}
+                >
+                    {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
+                </Select>
             </div>
-          } 
-          onChange={value => setArrivalAirport(value)}
-          value={
-            departureAirport ? (
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <ArrivingIcon />
-                <span style={{ marginLeft: '8px' }}>{arrivalAirport}</span>
-              </div>
-            ) : undefined
-          }
-          dropdownMatchSelectWidth={false}
-        >
-          {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
-        </Select>
-      </div>
-      <div className="section depart-date">
-        <DatePicker 
-          placeholder="Depart" 
-          onChange={(date, dateString) => setDepartureDate(date)} 
-          value={departureDate}
-        />
-      </div>
-      <div className="section return-date">
-        <DatePicker 
-          placeholder="Return" 
-          onChange={(date, dateString) => setReturnDate(date)} 
-          value={returnDate}
-        />
-      </div>
-      <div className="section passengers">
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <PersonIcon />
-          <InputNumber 
-            min={1} 
-            value={passengers} 
-            onChange={value => setPassengers(value)}
-            formatter={value => `${value} Passengers`}
-            parser={value => value.replace(' Passengers', '')}
-            style={{ marginLeft: '8px' }}  // Add some spacing between the icon and the input
-          />
+            <div className="section">
+                <Select 
+                    prefixIcon={<FlightLand />}
+                    placeholder="Where To?"
+                    onChange={setArrivalAirport}
+                    value={arrivalAirport}
+                >
+                    {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
+                </Select>
+            </div>
+            <div className="section">
+                <DatePicker 
+                    placeholder="Depart" 
+                    onChange={setDepartureDate} 
+                    value={departureDate}
+                />
+            </div>
+            <div className="section">
+                <DatePicker 
+                    placeholder="Return" 
+                    onChange={setReturnDate} 
+                    value={returnDate}
+                />
+            </div>
+            <div className="section">
+                <InputNumber 
+                    prefix={<Person />}
+                    min={1} 
+                    value={passengers} 
+                    onChange={setPassengers}
+                    formatter={value => `${value} `}
+                    parser={value => value.replace(' Passengers', '')}
+                />
+            </div>
+            <Button type="primary" onClick={handleSearch}>Search</Button>
         </div>
-        <div className="section search-button">
-       
-      </div>
-      
-      </div>
-      <Button type="primary" onClick={onSearch}>Search</Button>
-    </div>
-  );
+    );
 }
 
 export default SearchPanel;

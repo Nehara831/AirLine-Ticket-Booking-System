@@ -5,31 +5,42 @@ import Login from '../LoginPage'
 import SearchPanel from '../NewMainPage/NewMainSearch';
 import './NewMainView.css';
 import { useState } from 'react';
+import { useContext } from 'react';
+import {useFlight} from './UserContext';
+import Signup from '../../Pages/LoginPage/UserRegistration'
 
 import NavigationPanel from '../../componenets/NavigationHeaderFolder/NavigationHeader';
+// Create Context object
+ 
 function LoginPage() {
 
+  const {  userId, setUserId } = useFlight();
   
     const [isLoginVisible, setLoginVisible] = useState(false);
-    
+    const [isSignUpVisible, setSignUpVisible] = useState(false);
+
+   
   
     const handleLoginClick = () => {
       setLoginVisible(true);
     };
     const handleSignUpClick = () => {
-      navigate('/userSignUp');
+      setSignUpVisible(true);
+    };
+    const handleCloseSignUP = () => {
+      setSignUpVisible(false);
     };
     const handleCloseLogin = () => {
       setLoginVisible(false);
     };
-    ///////
+
   
   const navigate = useNavigate();
 
-  const handleSearch = () => {
+  // const handleSearch = () => {
 
-    navigate('/available-flights');
-  };
+  //   navigate('/available-flights');
+  // };
   
   return (
    
@@ -40,10 +51,24 @@ function LoginPage() {
         
        <NavigationPanel clicKSignInButton={handleLoginClick} clicKSignUpButton={handleSignUpClick}/>
       </nav>
-      {isLoginVisible && <Login onClose={handleCloseLogin} />}
-
+      <h1>User ID: {userId}</h1>
+      
+ {isLoginVisible && (
+        <>
+          <div className="overlay"></div> 
+          <Login onClose={handleCloseLogin}
+         />
+        </>
+      )}
+      {isSignUpVisible && (
+        <>
+          <div className="overlay"></div> 
+          <Signup onClose={handleCloseSignUP} />
+        </>
+      )}
+        
       <div className="background-image">
-      <SearchPanel onSearch={handleSearch} />      
+      <SearchPanel  />      
       </div>
     </div>
   );

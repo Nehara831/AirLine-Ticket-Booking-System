@@ -4,13 +4,20 @@ import './DepartingPage.css';
 import SubmitButton from '../componenets/Buttons/DepartingSubmitButton'
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import{useFlight} from '../Pages/NewMainView/UserContext'
+import { useContext } from 'react';
 const DepartingPage=({ flightData })=>{
+
+
+  const { selectedFlight, setSelectedFlight } = useFlight();
 
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
+    console.log(flightData);
+    setSelectedFlight(flightData.flightId);
     const totalPassengers = 5;  // Assume 5 passengers as an example
-    navigate(`/passengerDetails/${totalPassengers}`);
+    //navigate(`/passengerDetails/${totalPassengers}`);
   
   };
       return (
@@ -35,14 +42,14 @@ const DepartingPage=({ flightData })=>{
             </div>
             <div className="DataRowSecondary">
               <div className="TextBox">
-                <div className="Label2">{flightData.airline}</div>
+                <div className="Label2">{flightData.airlineName}</div>
               </div>
           
               <div className="TextBox">
-                <div className="Label1">{flightData.arrivingTime}</div>
+                <div className="Label1">{flightData.arrivalTime}</div>
               </div>
               <div className="TextBox1">
-                <div className="Label2">{flightData.tripType}</div>
+                <div className="Label2">{flightData.flightType}</div>
               </div>
             </div>
           </div>

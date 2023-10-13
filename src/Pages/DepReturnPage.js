@@ -23,32 +23,21 @@
 import React, { useState, useEffect } from 'react';
 import Depart from './DepPage';
 import './DepatingPage';
-
+import { useLocation } from 'react-router-dom';
 import SeatHeader from '../componenets/SeatSelectorHeader';
-
+import{useFlight} from './NewMainView/UserContext'
 function DepReturnPage() {
-const [flightData, setFlightData] = useState([]);
 
-  useEffect(() => {
-    // Replace 'YOUR_API_ENDPOINT' with the actual URL of your API
-    fetch('https://6515a4e1dc3282a6a3cec028.mockapi.io/api/flightData/flightDetails')
-      .then((response) => response.json())
-      .then((data) => {
-        // Assuming the API response is an array of flight data objects
-        
-        setFlightData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching flight data:', error);
-      });
-  }, []);
 
-  const departingFlights = flightData.filter((flight) => flight.type === 'Arriving');
-  const returningFlights = flightData.filter((flight) => flight.type === 'Returning');
-
+const location = useLocation();
+    const flyData = location.state?.flightData;
+    const { selectedFlight, setSelectedFlight } = useFlight();
+  
+  const { departingFlights, arrivingFlights } = flyData;
 
   return (
     <>
+     <h1>Flight ID: {selectedFlight}</h1>
       <div className="DepReturnBox">
         <div className='Label'>Departing Flights</div>
         <SeatHeader />
@@ -60,7 +49,7 @@ const [flightData, setFlightData] = useState([]);
         <div className='Label'>Returning Flights</div>
         <SeatHeader />
 
-        {returningFlights.map((flight, index) => (
+        {arrivingFlights.map((flight, index) => (
           <Depart key={index} flightData={flight} />
         ))}
       </div>

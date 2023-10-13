@@ -1,5 +1,7 @@
 .login-modal {
   position: fixed;
+  width: 80%;  
+  height: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -11,7 +13,18 @@
     0px 2px 4px 0px rgba(7, 4, 146, 0.10);
   width: 400px; /* Adjust width */
   z-index: 2;
+  
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);  /* semi-transparent grey */
+  z-index: 1;  /* Ensure overlay is below the modal but above everything else */
+}
+
 
 .BottomText-right-aligned {
   color: #605DEC;
@@ -19,21 +32,23 @@
   font-weight: 400;
   line-height: normal;
   text-align: left;
-  margin-left: 35px;
-  margin-bottom: 24px; /* Adjust spacing */
+  margin-left: 80px;
+  margin-bottom: 32px; /* Adjust spacing */
 }
 
 .TextShowBox {
   font-size: 14px; /* Adjust text size */
   color: #333;
-  margin-bottom: 16px; /* Adjust spacing */
+  margin-bottom: 20px; /* Adjust spacing */
+  margin-left: 14px;
 }
 
 .LoginTextBox {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  
 }
 
 /* Additional style for Inputs */
@@ -44,8 +59,8 @@
 .CheckboxContainer {
   display: flex;
   align-self: stretch;
-  margin-top: 10px;
-  margin-bottom: 16px; /* Adjust spacing */
+  margin-top: 20px;
+  margin-bottom: 24px; /* Adjust spacing */
 }
 
 .CheckboxContainer input[type='checkbox'] {
@@ -67,4 +82,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 16px; /* Added top margin */
  }
+
+ @media (min-width: 600px) {
+  .login-modal {
+    width: 450px;
+    height: 380px;
+  }
+}
+.TextShowBox p {
+  margin-bottom: 12px; /* adjust as needed */
+}
+.TextShowBox p:first-child {
+  margin-bottom: 12px; /* adjust as needed */
+}

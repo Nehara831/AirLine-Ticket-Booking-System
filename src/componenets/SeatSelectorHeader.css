@@ -36,14 +36,14 @@
     justify-content: flex-start;
     align-self: 'stretch';
     gap: 1px;
-    width: 100%;
+    width: 85%;
     height:80px;
     flex-direction: row;
     
   }
   .FlightInfoInformationDark{
     
-    width: 200px;
+    width: 300px;
     height:80px;
     padding-left: 24px;
     padding-right: 24px;

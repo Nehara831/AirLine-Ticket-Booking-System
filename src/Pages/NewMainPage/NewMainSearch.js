@@ -4,12 +4,14 @@ import { FlightTakeoff, FlightLand, Person } from '@mui/icons-material';
 import axios from 'axios';
 import './SearchPanel.css';
 import { useNavigate } from 'react-router-dom';
-
+import {useFlight} from '../NewMainView/UserContext'
 const { Option } = Select;
 
 function SearchPanel() {
 
   const navigate = useNavigate();
+  const flightContext = useFlight();
+  const { noOfPassengers, setnoOfPassengers } = flightContext;
 
     const [departureAirport, setDepartureAirport] = useState(null);
     const [arrivalAirport, setArrivalAirport] = useState(null);
@@ -41,7 +43,7 @@ function SearchPanel() {
           
           // Handle response (you might navigate, or do something with the response)
           //console.log(response.data);
-
+        //   setnoOfPassengers(passengers);
           navigate('/flightSelect', { state: { flightData: response.data } });
       } catch (error) {
           console.error("An error occurred while sending data to the backend", error);
@@ -93,8 +95,8 @@ function SearchPanel() {
                 <InputNumber 
                     prefix={<Person />}
                     min={1} 
-                    value={passengers} 
-                    onChange={setPassengers}
+                    value={noOfPassengers} 
+                    onChange={setnoOfPassengers}
                     formatter={value => `${value} `}
                     parser={value => value.replace(' Passengers', '')}
                 />

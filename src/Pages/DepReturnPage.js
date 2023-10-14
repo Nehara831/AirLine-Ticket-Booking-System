@@ -26,6 +26,8 @@ import './DepatingPage';
 import { useLocation } from 'react-router-dom';
 import SeatHeader from '../componenets/SeatSelectorHeader';
 import{useFlight} from './NewMainView/UserContext'
+import FlightCard from "./FlightCard/FlightCard"
+import './DepReturnPage.css'
 function DepReturnPage() {
 
 
@@ -43,14 +45,16 @@ const location = useLocation();
         <SeatHeader />
 
         {departingFlights.map((flight, index) => (
-          <Depart key={index} flightData={flight} />
+         
+          <FlightCard key={index} flightData={flight} />
         ))}
 
         <div className='Label'>Returning Flights</div>
         <SeatHeader />
 
         {arrivingFlights.map((flight, index) => (
-          <Depart key={index} flightData={flight} />
+          // <Depart key={index} flightData={flight} />
+          <FlightCard key={index} flightData={flight} />
         ))}
       </div>
     </>

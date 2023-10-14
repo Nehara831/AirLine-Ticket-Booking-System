@@ -1,16 +1,20 @@
 // Import necessary components from 'antd'
-import { Form, Input, Button, DatePicker, Radio, Select, Checkbox } from 'antd';
+import { Form, Input, Button, DatePicker, Radio, Select, Checkbox,message } from 'antd';
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegChat.css'
 import NavigationHeader from '../../componenets/NavigationHeaderFolder/NavigationHeader';
+import { useFlight } from '../NewMainView/UserContext';
 
 
+import axios from 'axios'; 
 
 
 
 
 const PassengerInformationForm = ({clearForm,onSubmit}) => {
+  const flightContext = useFlight();
+  const {userId,selectedFlight,noOfPassengers}=flightContext;
 
   const [form] = Form.useForm();  
   const { Option } = Select;
@@ -26,9 +30,33 @@ const navigate = useNavigate();
     
   };
 
-  const handleFormSubmit = (values) => {
-    onSubmit(values);  // Call the onSubmit prop when the form is submitted
-    form.resetFields();  // Optionally reset the form immediately
+  const handleFormSubmit = async (values) => {
+    // Include additional details in the request body
+      const requestData = {
+        ...values, // Include the form values
+        userId: userId, // Include userId
+        FlightId: selectedFlight, // Include selectedFlight
+        noOfPassengers: noOfPassengers, // Include noOfPassengers
+      };
+    try {
+      // Send the form data to the backend using Axios
+      const response = await axios.post('http://localhost:8080/passengers/add', requestData);
+      console.log('Received response from backend:', response.data);
+      message.success('Login successful!');
+
+      // Call the onSubmit prop when the form is successfully submitted
+      onSubmit(values);
+
+      // Optionally reset the form immediately
+      form.resetFields();
+
+      // Navigate to the next page
+      navigate(`/seatSelector`);
+
+    } catch (error) {
+      console.error('An error occurred while sending data to the backend', error);
+      // Handle error (show error message, etc.)
+    }
   };
   const [areFieldsEnabled, setAreFieldsEnabled] = useState(false);
 
@@ -43,21 +71,22 @@ const navigate = useNavigate();
   }, [clearForm, form]);
 
   return (
-    <div>
-    
+   
+    <>
 
       <div className="header">
-      {/* <NavigationHeader/> */}
+    
       </div>
-
+ 
       <Form form={form} layout="vertical" onFinish={handleFormSubmit} className="form-container">
-        <div>
+       
         <h1 className='header11'>Passenger Information </h1>
-        </div>
+       
 
        
           <h2 className="header2">Passenger 1 Information</h2>
-    <div className="horizontal-fields">
+          <div className="passenger-Form">
+          <div className="horizontal-fields">
     <Form.Item name="firstName" className="textbox">
         <Input placeholder="First Name" />
     </Form.Item>
@@ -93,8 +122,10 @@ const navigate = useNavigate();
     </Form.Item>
    
 </div>
+          </div>
+   
 
-<h2 className="header2">Emergency Contact Information</h2>
+{/* <h2 className="header2">Emergency Contact Information</h2>
 <Checkbox onChange={handleCheckboxChange} style={{ marginBottom: '10px' }}>Same as Passenger 1</Checkbox>
     <div className="horizontal-fields">
     <Form.Item name="firstName" className="textbox">
@@ -115,7 +146,7 @@ const navigate = useNavigate();
     <Form.Item name="middleName" className="textbox">
         <Input placeholder="Contact Number2"  disabled={!areFieldsEnabled}/>
     </Form.Item>
-</div>
+</div> */}
 
 
     <div>
@@ -152,7 +183,8 @@ const navigate = useNavigate();
 </Button>
         </Form.Item>
       </Form>
-    </div>
+
+  </>
   );
 };
 

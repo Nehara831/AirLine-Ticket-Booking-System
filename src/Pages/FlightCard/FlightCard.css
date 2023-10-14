@@ -1,0 +1,37 @@
+/* Add these styles to your CSS file or component */
+.ReusableCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 825px;
+  }
+  
+  .CardContent {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .CardRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .CardLabel {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .ParallelRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .CardValue {
+    margin-left: 5px;
+  }
+  

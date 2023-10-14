@@ -20,6 +20,7 @@ import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 import NewMainPage from './Pages/NewMainView/NewMainView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FlightProvider } from './Pages/NewMainView/UserContext';
+import FlightCard from './Pages/FlightCard/FlightCard'
 function App() {
   return (
     <FlightProvider>
@@ -37,7 +38,7 @@ function App() {
     </Router>
     </FlightProvider>
       
-   
+
    
 
  

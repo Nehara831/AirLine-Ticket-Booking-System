@@ -35,12 +35,15 @@ const navigate = useNavigate();
       const requestData = {
         ...values, // Include the form values
         userId: userId, // Include userId
-        FlightId: selectedFlight, // Include selectedFlight
-        noOfPassengers: noOfPassengers, // Include noOfPassengers
+        flightId: selectedFlight, // Include selectedFlight
+        noOfPassengers: noOfPassengers
+        
       };
+      console.log(requestData);
     try {
       // Send the form data to the backend using Axios
       const response = await axios.post('http://localhost:8080/passengers/add', requestData);
+      
       console.log('Received response from backend:', response.data);
       message.success('Login successful!');
 
@@ -51,7 +54,7 @@ const navigate = useNavigate();
       form.resetFields();
 
       // Navigate to the next page
-      navigate(`/seatSelector`);
+      
 
     } catch (error) {
       console.error('An error occurred while sending data to the backend', error);

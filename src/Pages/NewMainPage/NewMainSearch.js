@@ -35,7 +35,7 @@ function SearchPanel() {
               arrivalAirport:arrivalAirport,
               departureDate: departureDate.format('YYYY-MM-DD'), // Format date as string
               arrivalDate: returnDate.format('YYYY-MM-DD'), // Format date as string
-              passengers
+             
           };
 
           // Send data to backend

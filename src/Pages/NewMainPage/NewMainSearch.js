@@ -19,7 +19,7 @@ function SearchPanel() {
     const [returnDate, setReturnDate] = useState(null);
     const [passengers, setPassengers] = useState(1);
 
-    const airports = ['Los Angeles International Airport', 'John F. Kennedy International Airport', 'Chicago (ORD)', 'San Francisco (SFO)', 'Miami (MIA)'];
+    const airports = ['Los Angeles International Airport', 'John F. Kennedy International Airport', 'Chicago', 'San Francisco', 'Miami (MIA)'];
 
     const handleSearch = async () => {
       try {
@@ -44,6 +44,7 @@ function SearchPanel() {
           // Handle response (you might navigate, or do something with the response)
           //console.log(response.data);
         //   setnoOfPassengers(passengers);
+        console.log(response.data);
           navigate('/flightSelect', { state: { flightData: response.data } });
       } catch (error) {
           console.error("An error occurred while sending data to the backend", error);

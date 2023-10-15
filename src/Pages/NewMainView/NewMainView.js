@@ -14,7 +14,7 @@ import NavigationPanel from '../../componenets/NavigationHeaderFolder/Navigation
  
 function LoginPage() {
 
-  const {  userId, setUserId } = useFlight();
+  const {  userId } = useFlight();
   
     const [isLoginVisible, setLoginVisible] = useState(false);
     const [isSignUpVisible, setSignUpVisible] = useState(false);

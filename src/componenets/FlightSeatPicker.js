@@ -28,26 +28,30 @@ const FlightSeatPicker = () => {
   
     return availableSeats;
   };
-  availableSeats = generateAvailableSeats();
+
+
+ availableSeats = generateAvailableSeats();
   const initialSeatAssignments = availableSeats.map((seatNumber) => ({
     passengerId: null,
     seatNumber: seatNumber,
-  }));
+  })
+  
+  );
   
   const { userId, selectedFlight } = useFlight();
   const [passengers, setPassengers] = useState([]);
+  const[retrievedSeats,setRetrievedSeats]=useState([]);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatAssignments, setSeatAssignments] = useState(initialSeatAssignments);
+  const [lastSeatAssignment,setLastSeatAssignments]=useState(null);
   
   
   
-  
-  // Call the function to generate available seats
- 
 
- 
 
   useEffect(() => {
+
+
     // Define a function to fetch passengers for the user
     const fetchPassengers = async () => {
       try {
@@ -62,7 +66,7 @@ const FlightSeatPicker = () => {
 
     // Call the fetchPassengers function to fetch data
     fetchPassengers();
-  }, [userId]);
+  }, []);
 
   const handleSeatToggle = (seatNumber) => {
    
@@ -96,6 +100,11 @@ const FlightSeatPicker = () => {
         passengerId: passengers[nextPassengerIndex].passengerId,
         seatNumber: seatNumber,
       };
+      console.log(updatedAssignments);
+      setLastSeatAssignments( {
+        passengerId: passengers[nextPassengerIndex].passengerId,
+        seatNumber: seatNumber,
+      });
       setSeatAssignments(updatedAssignments);
      
       
@@ -107,12 +116,22 @@ const FlightSeatPicker = () => {
     const sendSeatAssignmentsToBackend = async () => {
       try {
         // Make an HTTP POST request to your backend API with updated seatAssignments
-        const response = await axios.post('http://your-backend-api-url', {
-          seatAssignments: seatAssignments,
+        const response = await axios.post('http://localhost:8080/passengers/seatAssignment', {
+         // seatAssignments: seatAssignments,
+          passengerId:lastSeatAssignment.passengerId,
+          seatId:lastSeatAssignment.seatNumber,
           userId:userId,
           flightId:selectedFlight,
            // Pass the updated seatAssignments
         });
+
+        const request={
+          passengerId:lastSeatAssignment.passengerId,
+          seatId:lastSeatAssignment.seatNumber,
+          userId:userId,
+          flightId:selectedFlight,
+        }
+        console.log(request);
 
         // Handle the response if needed
         console.log('Seat assignments sent to the backend:', response.data);
@@ -128,7 +147,7 @@ const FlightSeatPicker = () => {
 
   const renderSeatGrid = () => {
     const rows = [];
-    const numRows = 20;
+    const numRows = 14;
     const numSeatsPerRow = 6;
 
     for (let row = 1; row <= numRows; row++) {

@@ -21,7 +21,7 @@ const MultiPassengerEntry = () => {
 
   // Convert string to number
     const handleFormSubmit = (values) => {
-      console.log('Received values:', values);
+     // console.log('Received values:', values);
 
       setSubmissionCount(prevCount => prevCount + 1);
       if (submissionCount >= noOfPassengers) {

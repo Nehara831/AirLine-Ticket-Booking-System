@@ -39,12 +39,12 @@ const navigate = useNavigate();
         noOfPassengers: noOfPassengers
         
       };
-      console.log(requestData);
+      
     try {
       // Send the form data to the backend using Axios
       const response = await axios.post('http://localhost:8080/passengers/add', requestData);
       
-      console.log('Received response from backend:', response.data);
+     // console.log('Received response from backend:', response.data);
       message.success('Login successful!');
 
       // Call the onSubmit prop when the form is successfully submitted

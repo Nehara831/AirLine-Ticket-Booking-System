@@ -6,7 +6,7 @@ import {SeatAssignmentsContext} from '../../componenets/FlightSeatPicker'
 
 import { Card, CardContent, CardActions, Button, Grid, Typography,Box } from '@mui/material';
 import './SeatBookingStyles.css';
-import SeatBookingComponent from '../../componenets/FlightSeatPicker'
+import FlightSeatPicker from '../../componenets/FlightSeatPicker'
 // Define the SeatBookingPage component
 
 
@@ -16,13 +16,13 @@ const SeatBookingPage = () => {
   const seatAssignments = useContext(SeatAssignmentsContext);
 
 
-  console.log(seatAssignments);
+  //console.log(seatAssignments);
 
     return (
       
         <div className="seatBookingPage">
             <div className="leftSide">
-                <SeatBookingComponent />
+                <FlightSeatPicker />
             </div>
             <div className="rightSide">
             <FlightCard  />

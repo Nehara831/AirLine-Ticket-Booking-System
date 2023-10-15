@@ -340,7 +340,7 @@ const FlightSeatPicker = () => {
     // Update the seatAssignments state with the new values
     setSeatAssignments(updatedSeatAssignments);
     console.log('seat assignments',seatAssignments);
-           console.log('passengers',passengers);
+          
   }, [passengers]); // Run this effect when passengers state changes
   
 
@@ -355,8 +355,16 @@ const FlightSeatPicker = () => {
     } else if (selectedSeats.length < passengers.length) {
       
       setSelectedSeats([...selectedSeats, seatNumber]);
-      
+      const updatedSeatAssignments = passengers.map((passengerId, index) => ({
+        passengerId: passengerId,
+        seatNumber: null, // Assign seat number based on index
+       
+      }));
+      setSeatAssignments(updatedSeatAssignments);
       assignSeatToPassenger(seatNumber);
+     
+
+     
       
       
     }
@@ -368,57 +376,62 @@ const FlightSeatPicker = () => {
     const nextPassengerIndex = seatAssignments.findIndex(
       (assignment) => !assignment.seatNumber);
      
+console.log('next passenger index:',nextPassengerIndex);
 
     if (nextPassengerIndex !== -1 && nextPassengerIndex < passengers.length) {
-
-      const updatedAssignments = [...seatAssignments];
-      updatedAssignments[nextPassengerIndex] = {
-        passengerId: passengers[nextPassengerIndex].passengerId,
+      const nextPassenger = passengers[nextPassengerIndex];
+      console.log('next passenger :',nextPassenger);
+      if (nextPassenger && nextPassenger.passengerId !== null) {
+      const updated = [...seatAssignments];
+      updated[nextPassengerIndex] = {
+        passengerId: passengers,
         seatNumber: seatNumber,
       };
-      console.log(updatedAssignments);
+      console.log(updated);
       setLastSeatAssignments( {
-        passengerId: passengers[nextPassengerIndex].passengerId,
+        passengerId: passengers[nextPassengerIndex],
         seatNumber: seatNumber,
       });
-      setSeatAssignments(updatedAssignments);
+      setSeatAssignments(updated);
+      console.log('seat assignment',seatAssignments);
      
       
     }
+  }
   };
 
-  // useEffect(() => {
-  //   // Define a function to send seatAssignments to the backend
-  //   const sendSeatAssignmentsToBackend = async () => {
-  //     try {
-  //       // Make an HTTP POST request to your backend API with updated seatAssignments
-  //       const response = await axios.post('http://localhost:8080/passengers/seatAssignment', {
-  //        // seatAssignments: seatAssignments,
-  //         passengerId:lastSeatAssignment.passengerId,
-  //         seatId:lastSeatAssignment.seatNumber,
-  //         userId:userId,
-  //         flightId:selectedFlight,
-  //          // Pass the updated seatAssignments
-  //       });
+  useEffect(() => {
+    // Define a function to send seatAssignments to the backend
+    const sendSeatAssignmentsToBackend = async () => {
+      try {
+        // Make an HTTP POST request to your backend API with updated seatAssignments
+        const response = await axios.post('http://localhost:8080/passengers/seatAssignment', {
+         // seatAssignments: seatAssignments,
+          passengerId:lastSeatAssignment.passengerId,
+          seatId:lastSeatAssignment.seatNumber,
+          userId:userId,
+          flightId:selectedFlight,
+           // Pass the updated seatAssignments
+        });
 
-  //       const request={
-  //         passengerId:lastSeatAssignment.passengerId,
-  //         seatId:lastSeatAssignment.seatNumber,
-  //         userId:userId,
-  //         flightId:selectedFlight,
-  //       }
-  //       console.log(request);
+        const request={
+          passengerId:lastSeatAssignment.passengerId,
+          seatId:lastSeatAssignment.seatNumber,
+          userId:userId,
+          flightId:selectedFlight,
+        }
+        console.log(request);
 
-  //       // Handle the response if needed
-  //       console.log('Seat assignments sent to the backend:', response.data);
-  //     } catch (error) {
-  //       console.error('Error sending seat assignments:', error);
-  //     }
-  //   };
+        // Handle the response if needed
+        console.log('Seat assignments sent to the backend:', response.data);
+      } catch (error) {
+        console.error('Error sending seat assignments:', error);
+      }
+    };
 
-  //   // Call the function whenever seatAssignments changes
-  //   sendSeatAssignmentsToBackend();
-  // }, [seatAssignments]); // Add seatAssignments as a dependency
+    // Call the function whenever seatAssignments changes
+    sendSeatAssignmentsToBackend();
+  }, [seatAssignments]); // Add seatAssignments as a dependency
 
 
   const renderSeatGrid = () => {

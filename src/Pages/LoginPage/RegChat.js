@@ -19,6 +19,9 @@ const PassengerInformationForm = ({clearForm,onSubmit}) => {
   const [form] = Form.useForm();  
   const { Option } = Select;
 const navigate = useNavigate();
+
+
+
   const handleButtonClick = () => {
  
    
@@ -43,9 +46,9 @@ const navigate = useNavigate();
     try {
       // Send the form data to the backend using Axios
       const response = await axios.post('http://localhost:8080/passengers/add', requestData);
-      
+      console.log(response);
      // console.log('Received response from backend:', response.data);
-      message.success('Login successful!');
+      message.success('Passenger added successfully!');
 
       // Call the onSubmit prop when the form is successfully submitted
       onSubmit(values);
@@ -67,7 +70,8 @@ const navigate = useNavigate();
   const handleCheckboxChange = (e) => {
     setAreFieldsEnabled(e.target.checked);
   };
-   const [passengerName, setPassengerName] = useState('John Doe');
+   const [passengerName, setPassengerName] = useState();
+   
    
    useEffect(() => {
     form.resetFields();
@@ -77,115 +81,115 @@ const navigate = useNavigate();
    
     <>
 
-      <div className="header">
+      {/* <div className="header">
     
-      </div>
+      </div> */}
  
-      <Form form={form} layout="vertical" onFinish={handleFormSubmit} className="form-container">
+ <Form form={form} layout="vertical" onFinish={handleFormSubmit} className="form-container">
        
-        <h1 className='header11'>Passenger Information </h1>
-       
+       <h1 className='header11'>Passenger Information </h1>
+      
 
-       
-          <h2 className="header2">Passenger 1 Information</h2>
-          <div className="passenger-Form">
-          <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox">
-        <Input placeholder="First Name" />
-    </Form.Item>
-    <Form.Item name="middleName" className="textbox">
-        <Input placeholder="Middle Name" />
-    </Form.Item>
-    <Form.Item name="lastName" className="textbox">
-        <Input placeholder="Last Name" />
-    </Form.Item>
+      
+         <h2 className="header2">Passenger 1 Information</h2>
+         <div className="passenger-Form">
+         <div className="horizontal-fields">
+   <Form.Item name="firstName" className="textbox">
+       <Input placeholder="First Name" />
+   </Form.Item>
+   <Form.Item name="middleName" className="textbox">
+       <Input placeholder="Middle Name" />
+   </Form.Item>
+   <Form.Item name="lastName" className="textbox">
+       <Input placeholder="Last Name" />
+   </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="suffix" className="textbox">
-        <Input placeholder="Suffix" />
-    </Form.Item>
-    <Form.Item name="dateOfBirth" className="textbox">
-        <Input placeholder="Date of Birth" />
-    </Form.Item>
+   <Form.Item name="suffix" className="textbox">
+       <Input placeholder="Suffix" />
+   </Form.Item>
+   <Form.Item name="dateOfBirth" className="textbox">
+       <Input placeholder="Date of Birth" />
+   </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="email" className="textbox-middle">
-        <Input placeholder="Email" />
-    </Form.Item>
-    <Form.Item name="contactNumber1" className="textbox">
-        <Input placeholder="Contact Number 1" />
-    </Form.Item>
-    <Form.Item name="age" className="textbox">
-        <Input placeholder="Age" />
-    </Form.Item>
+   <Form.Item name="email" className="textbox-middle">
+       <Input placeholder="Email" />
+   </Form.Item>
+   <Form.Item name="contactNumber1" className="textbox">
+       <Input placeholder="Contact Number 1" />
+   </Form.Item>
+   <Form.Item name="age" className="textbox">
+       <Input placeholder="Age" />
+   </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="adress" className="textbox-large">
-        <Input placeholder="Adress" />
-    </Form.Item>
-   
+   <Form.Item name="address" className="textbox-large">
+       <Input placeholder="Adress" />
+   </Form.Item>
+  
 </div>
-          </div>
-   
+         </div>
+  
 
 {/* <h2 className="header2">Emergency Contact Information</h2>
 <Checkbox onChange={handleCheckboxChange} style={{ marginBottom: '10px' }}>Same as Passenger 1</Checkbox>
-    <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox">
-        <Input placeholder="First Name" disabled={!areFieldsEnabled}/>
-    </Form.Item>
-    
-    <Form.Item name="lastName" className="textbox">
-        <Input placeholder="Last Name" disabled={!areFieldsEnabled}/>
-    </Form.Item>
+   <div className="horizontal-fields">
+   <Form.Item name="firstName" className="textbox">
+       <Input placeholder="First Name" disabled={!areFieldsEnabled}/>
+   </Form.Item>
+   
+   <Form.Item name="lastName" className="textbox">
+       <Input placeholder="Last Name" disabled={!areFieldsEnabled}/>
+   </Form.Item>
 </div>
 <div className="horizontal-fields">
-    <Form.Item name="firstName" className="textbox">
-        <Input placeholder="Email" disabled={!areFieldsEnabled}/>
-    </Form.Item>
-    <Form.Item name="middleName" className="textbox">
-        <Input placeholder="Contact Number1"  disabled={!areFieldsEnabled}/>
-    </Form.Item>
-    <Form.Item name="middleName" className="textbox">
-        <Input placeholder="Contact Number2"  disabled={!areFieldsEnabled}/>
-    </Form.Item>
+   <Form.Item name="firstName" className="textbox">
+       <Input placeholder="Email" disabled={!areFieldsEnabled}/>
+   </Form.Item>
+   <Form.Item name="middleName" className="textbox">
+       <Input placeholder="Contact Number1"  disabled={!areFieldsEnabled}/>
+   </Form.Item>
+   <Form.Item name="middleName" className="textbox">
+       <Input placeholder="Contact Number2"  disabled={!areFieldsEnabled}/>
+   </Form.Item>
 </div> */}
 
 
-    <div>
-          <h2 className="header2">Bag Information</h2>
-          <p style={{ width: '500px', textAlign: 'justify' }}>    Each passenger is allowed one free carry-on bag and one personal item.
-    First checked bag for each passenger is also free.
-    Second bag check fees are waived for loyalty program members.
+   <div>
+         <h2 className="header2">Bag Information</h2>
+         <p style={{ width: '500px', textAlign: 'justify' }}>    Each passenger is allowed one free carry-on bag and one personal item.
+   First checked bag for each passenger is also free.
+   Second bag check fees are waived for loyalty program members.
 </p>
 
-          <div className="horizontal-fields2">
-          <Form.Item label="Passenger 1" className="textbox">
-          <div>{passengerName}</div>
-        </Form.Item>
-          <Form.Item name="checkedBags" label="Checked Bags" className="textbox">
-            <Select placeholder="Select Number of Bags">
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-            </Select>
-          </Form.Item>
-          </div>
-        </div>
+         <div className="horizontal-fields2">
+         <Form.Item label="Passenger 1" className="textbox">
+         <div>{passengerName}</div>
+       </Form.Item>
+         <Form.Item name="checkedBags" label="Checked Bags" className="textbox">
+           <Select placeholder="Select Number of Bags">
+             <Option value="1">1</Option>
+             <Option value="2">2</Option>
+             <Option value="3">3</Option>
+             <Option value="4">4</Option>
+           </Select>
+         </Form.Item>
+         </div>
+       </div>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit" className="button">
-            Save   
-          </Button>
-          <Button 
-  className={`button ${"button-spacing"}`} 
-  onClick={handleButtonClick}
+       <Form.Item>
+         <Button type="primary" htmlType="submit" className="button">
+           Save   
+         </Button>
+         <Button 
+ className={`button ${"button-spacing"}`} 
+ onClick={handleButtonClick}
 >
-  Select Seats
+ Select Seats
 </Button>
-        </Form.Item>
-      </Form>
+       </Form.Item>
+     </Form>
 
   </>
   );

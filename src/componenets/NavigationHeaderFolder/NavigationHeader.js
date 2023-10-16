@@ -1,7 +1,6 @@
-import React from 'react'
 import './NavigatorHeader.css'
 import NavMenu from '../NavigationMenu/Nav-Menu'
-const NavigationHeader=({clicKSignInButton,clicKSignUpButton})=> {
+const NavigationHeader=({clicKSignInButton,clicKSignUpButton,clickFlightsButton})=> {
     return (
         <div className="nav-header">
             <div className="nav-textItem">
@@ -9,7 +8,7 @@ const NavigationHeader=({clicKSignInButton,clicKSignUpButton})=> {
             </div>
             </div>
             <div className="nav-menu">
-                <NavMenu clicKSignIn={clicKSignInButton} clicKSignUp={clicKSignUpButton}/>
+                <NavMenu clicKSignIn={clicKSignInButton} clicKSignUp={clicKSignUpButton} clickFlights={clickFlightsButton}/>
                 
             </div>
         </div>

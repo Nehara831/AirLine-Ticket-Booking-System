@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import {useFlight} from './UserContext';
 import Signup from '../../Pages/LoginPage/UserRegistration'
-
+import FlightPopup from './FlightPopUpWindow/FlightPopUp';
 import NavigationPanel from '../../componenets/NavigationHeaderFolder/NavigationHeader';
 // Create Context object
  
@@ -18,6 +18,7 @@ function LoginPage() {
   
     const [isLoginVisible, setLoginVisible] = useState(false);
     const [isSignUpVisible, setSignUpVisible] = useState(false);
+    const [isFlightVisible, setFlightVisible] = useState(false);
 
    
   
@@ -32,6 +33,14 @@ function LoginPage() {
     };
     const handleCloseLogin = () => {
       setLoginVisible(false);
+    };
+
+    const handleCloseFlight = () => {
+      setFlightVisible(false);
+    };
+    const handleFlightClick = () => {
+      console.log('flightbutton clicked');
+      setFlightVisible(true);
     };
 
   
@@ -49,7 +58,7 @@ function LoginPage() {
     
       <nav className="navigation-panel">
         
-       <NavigationPanel clicKSignInButton={handleLoginClick} clicKSignUpButton={handleSignUpClick}/>
+       <NavigationPanel clicKSignInButton={handleLoginClick} clicKSignUpButton={handleSignUpClick} clickFlightsButton={handleFlightClick}/>
       </nav>
       <h1>User ID: {userId}</h1>
       
@@ -64,6 +73,13 @@ function LoginPage() {
         <>
           <div className="overlay"></div> 
           <Signup onClose={handleCloseSignUP} />
+        </>
+      )}
+
+    {isFlightVisible && (
+        <>
+          <div className="overlay"></div> 
+          <FlightPopup onClose={handleCloseFlight} />
         </>
       )}
         

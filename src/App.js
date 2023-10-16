@@ -21,6 +21,7 @@ import NewMainPage from './Pages/NewMainView/NewMainView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FlightProvider } from './Pages/NewMainView/UserContext';
 import FlightCard from './Pages/FlightCard/FlightCard'
+import NewMultiplePassengers from './Pages/NewMainView/FlightPopUpWindow/NewMultiplePassengers'
 function App() {
   return (
     <FlightProvider>
@@ -30,8 +31,9 @@ function App() {
           <Route path="/" element={<NewMainPage/>} exact />
           <Route path="/flightSelect" element={<DepRet />} />
           <Route path="/seatSelector"  element={<SeatBookingPage/>} />
-          <Route path="/passengerDetails/:totalPassengers"  element={<MultiplePassengers/>} />
+          <Route path="/passengerDetails"  element={<MultiplePassengers/>} />
           <Route path="/userSignUp"  element={<UserRegister/>} />
+          <Route path="/updatePassengerDetails"  element={<NewMultiplePassengers/>} />
 
         </Routes>
       </div>

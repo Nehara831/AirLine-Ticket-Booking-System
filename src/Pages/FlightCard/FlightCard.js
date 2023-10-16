@@ -8,22 +8,49 @@ import { useNavigate } from 'react-router-dom';
 
 const ReusableCard = ({ flightData}) => {
 
-    const { selectedFlight, setSelectedFlight } = useFlight();
+    const { userId,selectedFlight, setSelectedFlight } = useFlight();
     const navigate = useNavigate();
+
+
+    
+
+    const handleAddFlight = async () => {
+      try {
+          const response = await fetch(`http://localhost:8080/users/${userId}/add-flight/${selectedFlight}`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+          });
+
+          if (response.ok) {
+              console.log("Flight added to user successfully.");
+          } else {
+              console.error("Error adding flight to user.");
+          }
+      } catch (error) {
+          console.error("Error:", error);
+      }
+  };
 
     const handleButtonClick = () => {
         console.log(flightData);
         setSelectedFlight(flightData.flightId);
-        const totalPassengers = 5;  // Assume 5 passengers as an example
-        navigate(`/passengerDetails/${totalPassengers}`);
+        handleAddFlight();
+        navigate(`/passengerDetails`);
       
       };
   return (
     <Card
-      className="ReusableCard"
-      title={flightData.airlineName}
-      extra={<Button type="primary" onClick={handleButtonClick}>Submit</Button>}
-    >
+  className="ReusableCard"
+  title={
+    <div className="CardTitle">
+      {flightData.airlineName}
+      <hr className="CardTitleDivider" /> {/* Add a horizontal line */}
+    </div>
+  }
+  extra={<Button type="primary" style={{ backgroundColor: '#605DEC', borderColor: '#605DEC' }} onClick={handleButtonClick}>Select Flight</Button>}
+>
       <div className="CardContent">
         <div className="CardRow">
           <div className="CardLabel">Duration:</div>
@@ -59,6 +86,8 @@ const ReusableCard = ({ flightData}) => {
 ReusableCard.propTypes = {
   flightData: PropTypes.object.isRequired,
   onButtonClick: PropTypes.func.isRequired,
+  className: PropTypes.string, 
+
 };
 
 export default ReusableCard;

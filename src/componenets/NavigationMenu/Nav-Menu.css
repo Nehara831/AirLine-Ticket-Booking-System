@@ -1,21 +1,21 @@
-.nav-Menu{
+.nav-Menu {
     display: inline-flex;
     padding: 6px px;
-align-items: center;
-gap: 3px;
-
+    align-items: center;
+    gap: 3px;
 }
-.nav-Menu-Item{
+
+.nav-Menu-Item {
     display: flex;
     padding: 10px;
     align-items: center;
-   
-    color:#7C8DB0
+    color: #7C8DB0;
 }
+
 .nav-Menu-Button {
     padding: 10px 15px; 
-    background-color:white; 
-    color:#7C8DB0; 
+    background-color: white; 
+    color: #7C8DB0; 
     border: none;
     font-family: Nunito Sans;
     font-size: 16px;
@@ -27,6 +27,6 @@ gap: 3px;
 }
 
 .nav-Menu-Button:hover {
-    background-color: #9D8CF2; 
-    color:white;
+    background-color: white; /* Set the background color to the default */
+    color: #1b2f90; /* Change the font color */
 }

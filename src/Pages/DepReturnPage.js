@@ -39,10 +39,10 @@ const location = useLocation();
 
   return (
     <>
-     <h1>Flight ID: {selectedFlight}</h1>
+     {/* <h1>Flight ID: {selectedFlight}</h1> */}
       <div className="DepReturnBox">
         <div className='Label'>Departing Flights</div>
-        <SeatHeader />
+        {/* <SeatHeader /> */}
 
         {departingFlights.map((flight, index) => (
          
@@ -50,7 +50,7 @@ const location = useLocation();
         ))}
 
         <div className='Label'>Returning Flights</div>
-        <SeatHeader />
+        {/* <SeatHeader /> */}
 
         {arrivingFlights.map((flight, index) => (
           // <Depart key={index} flightData={flight} />

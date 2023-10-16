@@ -20,6 +20,7 @@ const DepartingPage=({ flightData })=>{
     //navigate(`/passengerDetails/${totalPassengers}`);
   
   };
+  
       return (
         <div className="FlightDataRow">
           <div className="DataRowCombined">

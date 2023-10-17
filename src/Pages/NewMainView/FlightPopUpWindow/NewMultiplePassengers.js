@@ -16,6 +16,9 @@ const MultiPassengerEntry = () => {
 
    // const passengerData = location.state?.passengerDetails;
     const pass1=location.state?.passengerDetails1;
+    const dataSize = location.state?.passengerDetails1.length;
+    
+    
 
   const navigate = useNavigate(); 
 
@@ -36,15 +39,15 @@ const MultiPassengerEntry = () => {
 
       setSubmissionCount(prevCount => prevCount + 1);
       if (submissionCount >= noOfPassengers) {
-        // Navigate to the next page when all passengers are entered
-         // Replace '/nextPage' with the actual URL of the next page
+          console.log('Submission count:', submissionCount);
+
       }
     
     };
   
     return (
  <div style={{ width: '800px', height: '800px',  overflowY: 'auto', paddingLeft: '20px' }}>
-   {submissionCount < 4 ? (
+   {submissionCount <  dataSize? (
     <UpdatePassengerInformationForm
       passengerDetails={passengerDetails[submissionCount]}
       clearForm={submissionCount}

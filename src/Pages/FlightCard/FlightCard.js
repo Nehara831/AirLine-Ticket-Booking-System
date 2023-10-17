@@ -24,7 +24,8 @@ const ReusableCard = ({ flightData}) => {
           });
 
           if (response.ok) {
-              console.log("Flight added to user successfully.");
+              console.log({userId});
+              console.log({selectedFlight});
           } else {
               console.error("Error adding flight to user.");
           }

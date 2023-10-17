@@ -26,7 +26,7 @@ const navigate = useNavigate();
 
   const handleButtonClick = () => {
  
-   
+    
    navigate(`/seatSelector`);
   };
   // Function to handle form submission
@@ -34,6 +34,10 @@ const navigate = useNavigate();
     console.log('Received values:', values);
     
   };
+
+
+
+
 
   const handleFormSubmit = async (values) => {
     // Include additional details in the request body
@@ -52,7 +56,8 @@ const navigate = useNavigate();
   axios
     .put(apiUrl, requestData)
     .then((response) => {
-        form.resetFields();
+      onSubmit(values);
+      form.resetFields();
       console.log('Passenger information updated successfully:', response.data);
       // Handle success (e.g., show a success message)
     })
@@ -70,10 +75,10 @@ const navigate = useNavigate();
    const [passengerName, setPassengerName] = useState();
    
    
-   useEffect(() => {
+  //  useEffect(() => {
 
-    form.resetFields();
-  },[clearForm, form]);
+  //   form.resetFields();
+  // },[clearForm, form]);
 
 
   return (

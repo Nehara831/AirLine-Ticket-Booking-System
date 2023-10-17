@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Card, Button } from 'antd';
 import './NewFlightCard.css'
 import PropTypes from 'prop-types';
 import { useFlight } from '../UserContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+
 
 
 const ReusableCard = ({ flightData}) => {
 
     const { userId,selectedFlight, setSelectedFlight } = useFlight();
     const navigate = useNavigate();
+    const [message, setMessage] = useState('');
 
 
     
@@ -22,6 +24,7 @@ const ReusableCard = ({ flightData}) => {
                     navigate(`/updatePassengerDetails`,{ state: { passengerDetails: response.data } });
                        // If the response data is an array, set it to passengerDetails
                       console.log('real response',response);
+                    
                      
                    })
                    .catch((error) => {
@@ -30,13 +33,15 @@ const ReusableCard = ({ flightData}) => {
                    });
 
   };
-  const handleAddFlight1 = async () => {
+  const handleUpdateFlight = async () => {
     const apiUrl = `http://localhost:8080/users/${userId}/passengersList`;
     axios.get(apiUrl)
             .then((response) => {
              navigate(`/updatePassengerDetails`,{ state: { passengerDetails1: response.data } });
                 // If the response data is an array, set it to passengerDetails
                console.log('real response',response);
+               
+               
               
             })
             .catch((error) => {
@@ -45,11 +50,31 @@ const ReusableCard = ({ flightData}) => {
             });
 
 };
+const handleDelete = () => {
+  // Make a DELETE request to the server with the flight ID
+  axios
+  .delete(`http://localhost:8080/flights/${selectedFlight}/user/${userId}`)    .then((response) => {
+      setMessage(`Flight with ID ${selectedFlight} deleted successfully.`);
+      // Clear the flight ID input field
+      // setSelectedFlight('');
+    })
+    .catch((error) => {
+      setMessage(`Error deleting flight with ID ${selectedFlight}: ${error.message}`);
+    });
+};
 
-    const handleButtonClick = () => {
+    const handleUpdateButtonClick = () => {
         console.log(flightData);
         setSelectedFlight(flightData.flightId);
-        handleAddFlight1();
+        handleUpdateFlight();
+        // navigate(`/updatePassengerDetails`,{ state: { passengerDetails: response.data } });
+      
+      };
+
+      const handleDeleteButtonClick = () => {
+        console.log(flightData);
+        setSelectedFlight(flightData.flightId);
+        handleDelete();
         // navigate(`/updatePassengerDetails`,{ state: { passengerDetails: response.data } });
       
       };
@@ -95,16 +120,16 @@ const ReusableCard = ({ flightData}) => {
           <Button
             type="primary"
             style={{ backgroundColor: '#605DEC', borderColor: '#605DEC' }}
-            onClick={handleButtonClick}
+            onClick={handleUpdateButtonClick}
           >
             Update Flight
           </Button>
           <Button
             type="default"
             style={{ marginLeft: '8px' }} // Add some margin for spacing
-            onClick={handleButtonClick} // Add a click handler for the second button
+            onClick={handleDeleteButtonClick} // Add a click handler for the second button
           >
-            Second Button
+            Delete Booking
           </Button>
        
       </div>

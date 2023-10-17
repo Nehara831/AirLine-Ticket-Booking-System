@@ -1,9 +1,32 @@
-import React from 'react'
-// import './Flights.css'
+import React, { useState } from 'react';
+import MessageBox from './MessageBox';
 import { Card, CardContent, CardActions, Button, Grid, Typography,Box } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useFlight } from '../../Pages/NewMainView/UserContext';
 const FlightCard= ()=>{
+    const [message, setMessage] = useState(null);
+
+    const { setnoOfPassengers, setSelectedFlight} =useFlight();
+    const navigate = useNavigate(); // Get the navigate function
+  const handleSave = () => {
+    
+
+    // Show the message when the "Save" button is clicked
+    setMessage('Your Booking Saved successfully');
+   
+    // Clear the message after 3 seconds (3000 milliseconds)
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+  };
+
+  const handleClose = () => {
+    setnoOfPassengers(1);
+     setSelectedFlight(null);
+    navigate('/'); // Navigates to the root route
+  };
     return(
+        <>
         <Card title="Class Information" style={{ width: '100%' }}>
         <CardContent>
             <Grid container spacing={2}>
@@ -41,18 +64,23 @@ const FlightCard= ()=>{
             </Grid>
         </CardContent>
         <CardActions>
-        <Box display="flex" justifyContent="center" width="100%" gap="30px">
-                        <Button variant="contained" style={{ backgroundColor: '#605DEC', color: 'white', marginRight: '8px' }}>
-                            Save
-                        </Button>
-                        <Button variant="contained" style={{ backgroundColor: '#605DEC', color: 'white' }}>
-                            Close
-                        </Button>
-                    </Box>
-                </CardActions>
-    </Card>
-    )
-  
-}
-export default FlightCard;
+          <Box display="flex" justifyContent="center" width="100%" gap="30px">
+            <Button
+              variant="contained"
+              style={{ backgroundColor: '#605DEC', color: 'white', marginRight: '8px' }}
+              onClick={handleSave}
+            >
+              Save
+            </Button>
+            <Button onClick={handleClose} variant="contained" style={{ backgroundColor: '#605DEC', color: 'white' }}>
+              Close
+            </Button>
+          </Box>
+        </CardActions>
+      </Card>
+      <MessageBox message={message} onClose={() => setMessage(null)} />
+    </>
+  );
+};
 
+export default FlightCard;

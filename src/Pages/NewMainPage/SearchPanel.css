@@ -7,6 +7,8 @@
     padding: 16px;
     background-color: #f8f8f8;
     border-radius: 8px;
+    width:900px;
+    height:40px;
 }
 
 .search-panel .section {
@@ -26,3 +28,9 @@
 .search-panel .section .ant-input-number-input {
     text-align: center;
 }
+/* In your CSS file, or a component-specific CSS file */
+.ant-picker-dropdown {
+    top: initial !important; /* Remove the 'top' property */
+    bottom: 1% !important; /* Set 'bottom' to open downward */
+  }
+  

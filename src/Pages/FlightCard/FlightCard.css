@@ -1,52 +1,22 @@
-/* Add these styles to your CSS file or component */
-.ReusableCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 825px;
-    border: 2px solid #605DEC; /* Add this line to set the border color */
-    padding: 10px; /* Add padding for spacing */
+
+
+  .ant-table {
+    width: 100%; /* Ensure the table takes up 100% of its container */
   }
   
-  .CardContent {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .CardRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 20px;
-  }
-  
-  .CardLabel {
+  /* Optional: Style the table header row */
+  .ant-table-thead > tr > th {
+    background-color: #f0f0f0; /* Example background color for the header row */
     font-weight: bold;
-    margin-right: 5px;
   }
   
-  .ParallelRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
+  /* Optional: Style the table rows */
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px solid #8b3535; /* Add a border between rows */
   }
   
-  .CardValue {
-    margin-left: 5px;
+  /* Optional: Style the table cell content */
+  .ant-table-cell {
+    padding: 8px 16px; /* Adjust cell padding as needed */
+    text-align: left; /* Align cell content to the left */
   }
-  .CardTitle {
-    font-size: 1.2em; /* Increase font size for the title */
-    padding-bottom: 0px; /* Add some spacing below the title */
-  }
-  .CardTitleDivider {
-    flex-grow: 1;
-   
-
-    margin: 0 1px; /* Adjust margin as needed */
-    border: none; /* Remove default border styling */
-    border-top: 2px solid #605DEC; /* Change the color to solid #605DEC */
-  }
-
-  

@@ -15,7 +15,7 @@ import SeatSelectorHeader from './componenets/SeatSelectorHeader';
 import UserRegister from './Pages/LoginPage/UserRegistration';
 import RegChat from './Pages/LoginPage/RegChat'
 import MultiplePassengers from './Pages/LoginPage/MultiplePassengers'
-
+import FlightTablr from "./Pages/FlightCard/FlightTable"
 import SeatBookingPage from './Pages/SeatSelectorPage/SeatBookingPage';
 import NewMainPage from './Pages/NewMainView/NewMainView';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';

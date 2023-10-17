@@ -7,9 +7,7 @@ import { Button, Typography } from '@mui/material';
 import './FlightSeatPickerStyles.css';
 import axios from 'axios';
 import { useFlight } from '../Pages/NewMainView/UserContext';
-
 import { message } from 'antd';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const SeatAssignmentsContext = createContext();

@@ -12,8 +12,8 @@
   }
   
   .form-container {
-    padding: 20px;
-    color: rgb(103, 34, 34);
+    padding: 2px;
+   
     height: 100px;
   }
   
@@ -71,6 +71,13 @@
 }
 
 .header11{
-    color: #3e3d54;
+    
     font-size:20px;
+}
+
+.Outer{
+margin-left: 80px;
+width:800px;
+  height:450px;
+  
 }

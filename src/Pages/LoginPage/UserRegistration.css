@@ -7,9 +7,10 @@
   
   .Form {
     position: fixed;
-    height: 90%;  /* Adjusted height */
-    width: 80%;   /* Adjusted width */
+    height:480px;  /* Adjusted height */
+    width: 400px;   /* Adjusted width */
     padding: 20px;
+  
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -19,6 +20,7 @@
     box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05), 0px 24px 60px 0px rgba(6, 47, 125, 0.05),
       0px 2px 4px 0px rgba(7, 4, 146, 0.10);
     z-index: 2;
+    
   }
 
   
@@ -39,12 +41,12 @@
   .SignUplabel{
   
 color: '#605DEC';
-font-size: 24px; /* Added unit */
+font-size: 20px; /* Added unit */
 line-height: 1.5;
  font-family: 'Nunito Sans';
  font-weight: '700';
  word-wrap: 'break-word';
- padding-bottom: 20px;
+ 
   }
 .Imag{
   flex-direction: row;
@@ -56,6 +58,24 @@ line-height: 1.5;
   
 }
 
+/* Add this to your CSS file */
+.FormHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  
+  padding-bottom: 10px;
+  
+}
+
+
+
+.CloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+ 
+}
 
 
 

@@ -1,28 +1,29 @@
 .Label{
-    color: #646474;
+    color: #6161f0;
 
 
-
-font-size: 23px;
+padding-left: 5px;
+font-size: 20px;
 font-style: normal;
 font-weight: 450;
 line-height: normal;
 height: 10%;
-padding-left: 15px;
+
 width: 100%;
 
 }
 
 .DepReturnBox{
     display: flex;
-width: 100%;
-height: 100%;
-padding-left: 50px;
-padding-right: 20px;
+width: 900px;
+height: 200px;
+padding-left: 15px;
+
 padding-top: 15px;
 flex-direction: column;
-align-items: center;
+align-items: left;
 flex-shrink: 0;
 gap:15px;
 background-color: white;
 }
+

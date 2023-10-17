@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Select, Button, InputNumber, DatePicker } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Select, Button, InputNumber, DatePicker, AutoComplete, Input } from 'antd';
 import { FlightTakeoff, FlightLand, Person } from '@mui/icons-material';
 import axios from 'axios';
 import './SearchPanel.css';
@@ -19,8 +19,22 @@ function SearchPanel() {
     const [returnDate, setReturnDate] = useState(null);
     const [passengers, setPassengers] = useState(1);
 
-    const airports = ['Los Angeles International Airport', 'John F. Kennedy International Airport', 'Chicago', 'San Francisco', 'Miami (MIA)'];
+    const [airports, setAirports] = useState([]); // State to store the list of airports
 
+  // Fetch airports from the backend when the component mounts
+  useEffect(() => {
+    const fetchAirports = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/airports/names');
+        setAirports(response.data); // Update the airports state with the fetched data
+      } catch (error) {
+        console.error("An error occurred while fetching airports from the backend", error);
+        // Handle error (show error message, etc.)
+      }
+    };
+
+    fetchAirports(); // Call the fetchAirports function when the component mounts
+  }, []);
     const handleSearch = async () => {
       try {
           // Ensure all fields are filled
@@ -59,30 +73,44 @@ function SearchPanel() {
     return (
         <div className="search-panel">
             <div className="section">
-                <Select 
-                    prefixIcon={<FlightTakeoff />}
-                    placeholder="From Where?"
-                    onChange={setDepartureAirport}
-                    value={departureAirport}
-                >
-                    {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
-                </Select>
-            </div>
-            <div className="section">
-                <Select 
-                    prefixIcon={<FlightLand />}
-                    placeholder="Where To?"
-                    onChange={setArrivalAirport}
-                    value={arrivalAirport}
-                >
-                    {airports.map(airport => <Option key={airport} value={airport}>{airport}</Option>)}
-                </Select>
-            </div>
+            
+            <AutoComplete
+  options={airports.map(airport => ({ value: airport }))}
+  prefix={<FlightTakeoff />}
+  placeholder="From Where?"
+  onChange={setDepartureAirport}
+  value={departureAirport}
+  filterOption={(inputValue, option) =>
+    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+  }
+  onSelect={(value) => setDepartureAirport(value)}
+>
+  <Input />
+</AutoComplete>
+</div>
+<div className="section">
+<AutoComplete
+  options={airports.map(airport => ({ value: airport }))}
+  prefix={<FlightLand />}
+  placeholder="Where To?"
+  onChange={setArrivalAirport}
+  value={arrivalAirport}
+  filterOption={(inputValue, option) =>
+    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+  }
+  onSelect={(value) => setArrivalAirport(value)}
+>
+  <Input />
+</AutoComplete>
+</div>
+
+           
             <div className="section">
                 <DatePicker 
                     placeholder="Depart" 
                     onChange={setDepartureDate} 
                     value={departureDate}
+                    popupPlacement="bottomLeft"
                 />
             </div>
             <div className="section">
@@ -90,6 +118,7 @@ function SearchPanel() {
                     placeholder="Return" 
                     onChange={setReturnDate} 
                     value={returnDate}
+                    popupPlacement="bottomLeft"
                 />
             </div>
             <div className="section">

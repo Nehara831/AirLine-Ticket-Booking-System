@@ -28,6 +28,7 @@ import SeatHeader from '../componenets/SeatSelectorHeader';
 import{useFlight} from './NewMainView/UserContext'
 import FlightCard from "./FlightCard/FlightCard"
 import './DepReturnPage.css'
+import FlightTable from './FlightCard/FlightTable'
 function DepReturnPage() {
 
 
@@ -44,18 +45,18 @@ const location = useLocation();
         <div className='Label'>Departing Flights</div>
         {/* <SeatHeader /> */}
 
-        {departingFlights.map((flight, index) => (
+       
          
-          <FlightCard key={index} flightData={flight} />
-        ))}
+          <FlightTable  flightData={departingFlights} />
+        
 
         <div className='Label'>Returning Flights</div>
         {/* <SeatHeader /> */}
 
-        {arrivingFlights.map((flight, index) => (
-          // <Depart key={index} flightData={flight} />
-          <FlightCard key={index} flightData={flight} />
-        ))}
+       
+        <div className="DepReturnBox">
+          <FlightTable  flightData={arrivingFlights} />
+       </div>
       </div>
     </>
   );

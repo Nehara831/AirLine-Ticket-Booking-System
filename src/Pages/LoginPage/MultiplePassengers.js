@@ -19,35 +19,6 @@ const MultiPassengerEntry = () => {
 
     const [submissionCount, setSubmissionCount] = useState(0);
    
-    
-    // const [passengerDetails, setPassengerDetails] = useState([]);
-
-    
-    // useEffect(() => {
-    //   console.log("Hi");
-    //   // Define the URL with the user ID as a query parameter
-    //   const apiUrl = `http://localhost:8080/users/${userId}/passengers`;
-    
-    //   // Make the GET request
-    //   axios.get(apiUrl)
-    //     .then((response) => {
-          
-    //       if (typeof response.data._embedded.passengers === 'object') {
-    //         const dataArray = Object.values(response.data._embedded.passengers);
-            
-    //          setPassengerDetails(dataArray);
-    //          console.log('passenger Details',passengerDetails);
-    //       } else {
-    //         console.error('Invalid response data:', response.data);
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       // Handle any errors
-    //       console.error('Error fetching flight list:', error);
-    //     });
-    // }, []);
-
-
   // Convert string to number
     const handleFormSubmit = (values) => {
      // console.log('Received values:', values);
@@ -61,13 +32,13 @@ const MultiPassengerEntry = () => {
     };
   
     return (
-<div style={{ width: '800px', height: '800px',  overflowY: 'auto', paddingLeft: '20px' }}>
+<div style={{ width: '900px', height: '500px',  paddingLeft: '20px',overflow: 'hidden' }}>
   {submissionCount < noOfPassengers ? (
     <PassengerInformationForm
       
       clearForm={submissionCount}
       onSubmit={handleFormSubmit}
-      style={{ maxHeight: '100%', overflowY: 'auto' }}
+      // style={{ maxHeight: '400px', verflow: 'hidden' }}
     />
   ) : 
   <div>

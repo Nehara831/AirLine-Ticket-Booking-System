@@ -4,14 +4,14 @@ const NavigationMenu=({clicKSignIn,clicKSignUp,clickFlights})=>{
     return(
         <div class="nav-Menu"> 
         <div class="nav-Menu-Item">
-            <button class="nav-Menu-Button" onClick={clickFlights}>Flights</button>
+            <button class="nav-Menu-Button" onClick={clickFlights}>Bookings</button>
         </div>
-        <div class="nav-Menu-Item">
+        {/* <div class="nav-Menu-Item">
             <button class="nav-Menu-Button">Hotels</button>
         </div>
         <div class="nav-Menu-Item">
             <button class="nav-Menu-Button">Packages</button>
-        </div>
+        </div> */}
         <div class="nav-Menu-Item">
             <button class="nav-Menu-Button" onClick={clicKSignIn}>Sign In</button>
         </div>

@@ -60,7 +60,7 @@ function LoginPage() {
         
        <NavigationPanel clicKSignInButton={handleLoginClick} clicKSignUpButton={handleSignUpClick} clickFlightsButton={handleFlightClick}/>
       </nav>
-      <h1>User ID: {userId}</h1>
+      {/* <h1>User ID: {userId}</h1> */}
       
  {isLoginVisible && (
         <>

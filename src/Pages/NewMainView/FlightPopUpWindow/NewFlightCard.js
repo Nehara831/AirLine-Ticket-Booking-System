@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ReusableCard = ({ flightData}) => {
 
-    const { userId,selectedFlight, setSelectedFlight } = useFlight();
+    const { userId,selectedFlight, setSelectedFlight,setBookedFlights,setFlightList } = useFlight();
     const navigate = useNavigate();
     const [message, setMessage] = useState('');
 
@@ -55,14 +55,40 @@ const handleDelete = () => {
   axios
   .delete(`http://localhost:8080/flights/${selectedFlight}/user/${userId}`)    .then((response) => {
       setMessage(`Flight with ID ${selectedFlight} deleted successfully.`);
-      // Clear the flight ID input field
-      // setSelectedFlight('');
+      setBookedFlights(2);
+      updateAfterDelete();
+      setBookedFlights(6);
+      
     })
     .catch((error) => {
       setMessage(`Error deleting flight with ID ${selectedFlight}: ${error.message}`);
     });
 };
 
+
+
+const updateAfterDelete = () => {
+  // Make a DELETE request to the server with the flight ID
+  const apiUrl = `http://localhost:8080/users/${userId}/flights`;
+      
+        // Make the GET request
+        axios.get(apiUrl)
+          .then((response) => {
+            if (typeof response.data === 'object') {
+              const dataArray = Object.values(response.data);
+              setFlightList(dataArray);
+              console.log("response",response.data);
+            } else {
+                setFlightList(response.data);
+
+              console.error('Invalid response data:', response.data);
+            }
+          })
+          .catch((error) => {
+            // Handle any errors
+            console.error('Error fetching flight list:', error);
+          });
+};
     const handleUpdateButtonClick = () => {
         console.log(flightData);
         setSelectedFlight(flightData.flightId);

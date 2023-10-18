@@ -8,7 +8,7 @@ import './FlightPopUp.css'
 const FlightPopup = ({ onClose }) => {
 
 
-    const { userId,selectedFlight } = useFlight();
+    const { userId,selectedFlight,bookedFlights } = useFlight();
     const [flightList, setFlightList] = useState([]);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ const FlightPopup = ({ onClose }) => {
             // Handle any errors
             console.error('Error fetching flight list:', error);
           });
-      }, [userId]);
+      }, [bookedFlights]);
       
 
     return (

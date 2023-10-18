@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import UpdatePassengerInformationForm from './NewRegChat';
 import { useNavigate } from 'react-router-dom'; 
 import { useLocation } from 'react-router-dom';
+import MessageBox from '../../../componenets/SearchFlights/MessageBox';
 
 
 import { useFlight } from '../UserContext';
@@ -13,13 +14,27 @@ import { useFlight } from '../UserContext';
 
 const MultiPassengerEntry = () => {
     const location = useLocation();
+    const [message, setMessage] = useState(null);
 
    // const passengerData = location.state?.passengerDetails;
     const pass1=location.state?.passengerDetails1;
     const dataSize = location.state?.passengerDetails1.length;
     
     
-
+    const handlUpdate = () => {
+      setMessage('Passenger Information Updated Successfully');
+  
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      navigate('/');
+    };
+    const handleClose = () => {
+     // setnoOfPassengers(1);
+    //  setSelectedFlight(null);
+      navigate('/');
+    };
+  
   const navigate = useNavigate(); 
 
  // console.log('recieved',passengerData);
@@ -56,7 +71,7 @@ const MultiPassengerEntry = () => {
     />
   ) : 
   <div>
-          { navigate('/seatSelector')}
+          { handlUpdate()}
           Navigating to the next page...
         </div>
   } 

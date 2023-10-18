@@ -165,7 +165,7 @@ const navigate = useNavigate();
 
        <Form.Item>
          <Button type="primary" htmlType="submit" className="button">
-           Save   
+           Update   
          </Button>
          <Button 
  className={`button ${"button-spacing"}`} 

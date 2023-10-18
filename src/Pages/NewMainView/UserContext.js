@@ -13,13 +13,14 @@ export const FlightProvider = ({ children }) => {
     const [selectedFlight, setSelectedFlight] = useState(null);
     const [passengerDetails, setPassengerDetails] = useState([]);
     const [noOfPassengers, setnoOfPassengers] = useState(1);
-
+    const [bookedFlights, setBookedFlights] = useState(9);
+    const[flightList, setFlightList]=useState([]);
     const addPassenger = (passenger) => {
         setPassengerDetails(prev => [...prev, passenger]);
     };
 
     return (
-        <FlightContext.Provider value={{ userId, setUserId,noOfPassengers, setnoOfPassengers,selectedFlight, setSelectedFlight, passengerDetails, addPassenger }}>
+        <FlightContext.Provider value={{ bookedFlights, setBookedFlights,flightList, setFlightList,userId, setUserId,noOfPassengers, setnoOfPassengers,selectedFlight, setSelectedFlight, passengerDetails, addPassenger }}>
             {children}
         </FlightContext.Provider>
     );

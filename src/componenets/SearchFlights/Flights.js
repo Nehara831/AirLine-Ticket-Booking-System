@@ -20,7 +20,7 @@ const FlightCard = () => {
 
   const handleClose = () => {
     setnoOfPassengers(1);
-    setSelectedFlight(null);
+  //  setSelectedFlight(null);
     navigate('/');
   };
 

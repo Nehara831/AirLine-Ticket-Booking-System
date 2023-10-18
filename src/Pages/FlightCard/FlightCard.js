@@ -109,7 +109,7 @@ import { Table, Button } from 'antd';
 
 // export default ReusableCard;
 const FlightDataTable = ({ flightData }) => {
-  const { userId,selectedFlight, setSelectedFlight } = useFlight();
+  const { userId,selectedFlight, setSelectedFlight,setBookedFlights } = useFlight();
   
       const handleAddFlight = async () => {
         try {
@@ -123,6 +123,7 @@ const FlightDataTable = ({ flightData }) => {
             if (response.ok) {
                 console.log({userId});
                 console.log({selectedFlight});
+                setBookedFlights(3);
             } else {
                 console.error("Error adding flight to user.");
             }

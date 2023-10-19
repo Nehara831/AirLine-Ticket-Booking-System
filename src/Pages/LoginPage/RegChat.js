@@ -109,22 +109,23 @@ const navigate = useNavigate();
      <Input placeholder="Date of Birth" />
  </Form.Item>
 </div>
+
+<div className="horizontal-fields">
+ <Form.Item name="address" style={{ width: '720px'}}>
+     <Input placeholder="Adress" />
+ </Form.Item>
+
+</div>
 <div className="horizontal-fields">
  <Form.Item name="email" className="textbox-middle">
      <Input placeholder="Email" />
  </Form.Item>
  <Form.Item name="contactNumber1" className="textbox">
-     <Input placeholder="Contact Number 1" />
+     <Input placeholder="Contact Number " />
  </Form.Item>
  <Form.Item name="age" className="textbox">
      <Input placeholder="Age" />
  </Form.Item>
-</div>
-<div className="horizontal-fields">
- <Form.Item name="address" className="textbox-large">
-     <Input placeholder="Adress" />
- </Form.Item>
-
 </div>
        </div>
 

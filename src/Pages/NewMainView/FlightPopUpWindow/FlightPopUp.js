@@ -8,8 +8,8 @@ import './FlightPopUp.css'
 const FlightPopup = ({ onClose }) => {
 
 
-    const { userId,selectedFlight,bookedFlights } = useFlight();
-    const [flightList, setFlightList] = useState([]);
+    const { userId,selectedFlight,bookedFlights,flightList, setFlightList } = useFlight();
+    const[fly,setFly]=useState([]);
 
     useEffect(() => {
         // Define the URL with the user ID as a query parameter
@@ -20,8 +20,8 @@ const FlightPopup = ({ onClose }) => {
           .then((response) => {
             if (typeof response.data === 'object') {
               const dataArray = Object.values(response.data);
-              setFlightList(dataArray);
-              console.log("response",response.data);
+              setFly(dataArray);
+              console.log("response at the use effect",response.data);
             } else {
                 setFlightList(response.data);
 
@@ -42,8 +42,8 @@ const FlightPopup = ({ onClose }) => {
           Close
         </button>
         <div className="flight-cards">
-          {flightList.map((flight,index) => (
-            <NewFlightCard key={flight.flightId} flightData={flightList[index]} />
+          {fly.map((flight,index) => (
+            <NewFlightCard key={flight.flightId} flightData={fly[index]} />
           ))}
         </div>
       </div>

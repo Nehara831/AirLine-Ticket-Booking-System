@@ -1,24 +1,3 @@
-// import React from 'react';
-// import Depart from './DepPage'
-// import './DepReturnPage.css'
-// function DepReturnPage() {
-//     return (
-//       <>
-//       <div className="DepReturnBox">
-//     <div className='Label'>Departing Flights</div>
-//     <Depart flightData={}/>
-
-//       <div className='Label'>Returning Flights</div>
-       
-//       <Depart/>
-       
-//         </div></>
-      
-//     );
-//   }
-  
-//   export default DepReturnPage;
-
 
 import React, { useState, useEffect } from 'react';
 import Depart from './DepPage';
@@ -40,23 +19,23 @@ const location = useLocation();
 
   return (
     <>
+    
      {/* <h1>Flight ID: {selectedFlight}</h1> */}
       <div className="DepReturnBox">
-        <div className='Label'>Departing Flights</div>
+
+      <div className='Label'>Returning Flights</div>
         {/* <SeatHeader /> */}
 
        
-         
+       
+          <FlightTable  flightData={arrivingFlights} />
+     
+        
+        <div className='Label'>Departing Flights</div>     
           <FlightTable  flightData={departingFlights} />
         
 
-        <div className='Label'>Returning Flights</div>
-        {/* <SeatHeader /> */}
-
        
-        <div className="DepReturnBox">
-          <FlightTable  flightData={arrivingFlights} />
-       </div>
       </div>
     </>
   );

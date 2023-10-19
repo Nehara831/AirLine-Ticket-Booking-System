@@ -27,14 +27,14 @@ const FlightCard = () => {
   return (
     <>
     <div>
-    <div className="vertical-container">   <Box width="100%">
+    <div className="vertical-container"  style={{ marginTop:'150px' }}>   <Box width="100%">
         <Grid container spacing={2}>
           {/* Left Side: Economy Class */}
           <Grid item xs={6}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               Economy Class
             </Typography>
-            <Typography fontSize="12px">
+            <Typography fontSize="14px">
               Economy class offers affordable flying with standard seating arrangements and basic amenities.
             </Typography>
             <ul className="custom-bullets">
@@ -46,10 +46,10 @@ const FlightCard = () => {
 
           {/* Right Side: Business Class */}
           <Grid item xs={6}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               Business Class
             </Typography>
-            <Typography fontSize="12px">
+            <Typography fontSize="14px">
             Rest and recharge during your flight with extended leg room, personalized service, and a multi-course meal service
             </Typography>
 
@@ -66,7 +66,7 @@ const FlightCard = () => {
 </div>
     
      <div> <Box display="flex" justifyContent="center" width="100%" mt={2}>
-        <Box width="100%" display="flex" justifyContent="cen ter">
+        <Box width="100%" display="flex" justifyContent="center" >
           <Button
             variant="contained"
             style={{ height:'25px',backgroundColor: '#605DEC', color: 'white', marginRight: '8px' }}

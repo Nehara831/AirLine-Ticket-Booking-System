@@ -1,8 +1,8 @@
-/* PassengerInformationForm.css */
+PassengerInformationForm.css
 .header {
     padding: 20px;
     background-color: #605DEC;
-    font-size: 10px;
+   
     
   }
   
@@ -14,7 +14,7 @@
   .form-container {
     padding: 2px;
    
-    height: 100px;
+    height: 1200px;
   }
   
   .button {
@@ -29,6 +29,7 @@
 
   .passenger-Form{
     margin-left: 10px;
+    gap:210px;
     
   }
   
@@ -36,48 +37,49 @@
     display: flex;
     gap: 10px; 
     
-    
+   
 
     
-    /* Adjust the gap between fields as needed */
+   
   }
   
   .textbox {
     max-width: 150px;
-    font-size: 1px; /* Set the maximum width for the text boxes */
+     font-size: 1px;  
   }
   .textbox-large {
-    width: 400px;
-    height:4px /* Set the maximum width for the text boxes */
-  }
+    max-width: 800px;
+    margin-bottom: 10px;
+     }
   .textbox-middle {
-    width: 400px; /* Set the maximum width for the text boxes */
+    width: 400px;
   }
   .header2 {
     color: #6E7491;
-    font-size: 13px;
+    font-size: 18px;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
     word-wrap: break-word;
-    font-size: 13px;
+    margin-top:20px;
+    
 }
 .horizontal-fields2 {
     display: flex;
     gap: 00px;
-    padding-top: 20px; /* Adjust this value to increase or decrease the spacing */
-}
+    padding-top: 20px; 
 .button-spacing {
-    margin-left: 60px; /* Adjust this value to increase or decrease the spacing */
-}
+    margin-left: 60px; 
+}}
 
 .header11{
     
-    font-size:20px;
+    font-size:25px;
 }
 
-.Outer{
-margin-left: 80px;
-width:800px;
-  height:450px;
-  
+.Outer {
+  margin-left: 180px;
+  width: 800px;
+ padding:20px;
+  gap: 20px;
+  border: 2px solid #bfbaba; /* Add a 2px solid black border */
 }

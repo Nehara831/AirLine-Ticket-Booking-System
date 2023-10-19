@@ -32,13 +32,13 @@ const MultiPassengerEntry = () => {
     };
   
     return (
-<div style={{ width: '900px', height: '500px',  paddingLeft: '20px',overflow: 'hidden' }}>
+<div style={{ width: '1200px', height: '100%',  paddingLeft: '150px' }}>
   {submissionCount < noOfPassengers ? (
     <PassengerInformationForm
       
       clearForm={submissionCount}
       onSubmit={handleFormSubmit}
-      // style={{ maxHeight: '400px', verflow: 'hidden' }}
+      
     />
   ) : 
   <div>

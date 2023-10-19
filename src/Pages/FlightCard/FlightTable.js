@@ -63,20 +63,22 @@ import './FlightCard.css'; // Make sure to import your CSS file.
         key: 'action',
         render: (text, record) => (
           <Button
-            type="primary"
-            style={{
-              backgroundColor: '#605DEC',
-              borderColor: '#605DEC',
-              height: '25px', // Set the height to your desired value
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            onClick={() => handleSelectFlight(record.key)}
-          >
-            Select Flight
-          </Button>
+          type="primary"
+          style={{
+            backgroundColor: '#605DEC',
+            borderColor: '#605DEC',
+            width: '45px',
+            height: '25px', // Set the height to your desired value
+            display: 'flex',
+            flexDirection: 'row', // Change to 'row' to place the arrow after the text
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onClick={() => handleSelectFlight(record.key)}
+        >
+         <span style={{ marginLeft: '5px' }}>{'->'}</span>
+        </Button>
+        
         ),
       },
       

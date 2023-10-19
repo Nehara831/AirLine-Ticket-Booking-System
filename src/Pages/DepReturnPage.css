@@ -15,10 +15,10 @@ width: 100%;
 
 .DepReturnBox{
     display: flex;
-width: 900px;
+width: 1450px;
 height: 200px;
-padding-left: 15px;
-
+padding-left: 25px;
+padding-right: 15px;
 padding-top: 15px;
 flex-direction: column;
 align-items: left;

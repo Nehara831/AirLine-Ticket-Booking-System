@@ -52,12 +52,14 @@ const ReusableCard = ({ flightData}) => {
 };
 const handleDelete = () => {
   // Make a DELETE request to the server with the flight ID
+  console.log("Selected Flight",selectedFlight);
   axios
-  .delete(`http://localhost:8080/flights/${selectedFlight}/user/${userId}`)    .then((response) => {
+  .delete(`http://localhost:8080/users/${userId}/flightsDelete/${flightData.flightId}`) 
+     .then((response) => {
+      setBookedFlights(100);
       setMessage(`Flight with ID ${selectedFlight} deleted successfully.`);
-      setBookedFlights(2);
-      updateAfterDelete();
-      setBookedFlights(6);
+      console.log('response for deleting a flight',response);
+     
       
     })
     .catch((error) => {
@@ -76,6 +78,7 @@ const updateAfterDelete = () => {
           .then((response) => {
             if (typeof response.data === 'object') {
               const dataArray = Object.values(response.data);
+              console.log('update after delete GET',dataArray);
               setFlightList(dataArray);
               console.log("response",response.data);
             } else {
@@ -98,9 +101,12 @@ const updateAfterDelete = () => {
       };
 
       const handleDeleteButtonClick = () => {
-        console.log(flightData);
-        setSelectedFlight(flightData.flightId);
+      
+       // setSelectedFlight(flightData.flightId);
         handleDelete();
+        updateAfterDelete();
+         
+        // updateAfterDelete();
         // navigate(`/updatePassengerDetails`,{ state: { passengerDetails: response.data } });
       
       };

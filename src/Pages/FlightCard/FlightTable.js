@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import { Table, Button } from 'antd';
 import PropTypes from 'prop-types';
 import { useFlight } from '../NewMainView/UserContext';
@@ -20,7 +20,7 @@ import './FlightCard.css'; // Make sure to import your CSS file.
       };
     const { userId,selectedFlight,setSelectedFlight } = useFlight();
     const navigate = useNavigate();
-   
+    const { flight,setFlight } = useState(null);
   
     const dataSource = formatFlightDataForTable(flightData);
 
@@ -84,9 +84,9 @@ import './FlightCard.css'; // Make sure to import your CSS file.
       
     ];
 
-        const handleAddFlight = async () => {
+        const handleAddFlight = async (flightatTable) => {
       try {
-          const response = await fetch(`http://localhost:8080/users/${userId}/add-flight/${selectedFlight}`, {
+          const response = await fetch(`http://localhost:8080/users/${userId}/add-flight/${flightatTable}`, {
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -94,8 +94,8 @@ import './FlightCard.css'; // Make sure to import your CSS file.
           });
 
           if (response.ok) {
-              console.log({userId});
-              console.log({selectedFlight});
+            setSelectedFlight(flightatTable);
+              console.log('selected flight at flight table',flightatTable);
           } else {
               console.error("Error adding flight to user.");
           }
@@ -105,8 +105,8 @@ import './FlightCard.css'; // Make sure to import your CSS file.
   };
   
     const handleSelectFlight = (flightId) => {
-      setSelectedFlight(flightId);
-      handleAddFlight();
+      
+      handleAddFlight(flightId);
       navigate(`/passengerDetails`);
     };
   

@@ -15,13 +15,13 @@ const MultiPassengerEntry = () => {
 
 
   const flightContext = useFlight();
-  const { userId,noOfPassengers, setnoOfPassengers } = flightContext;
+  const { selectedFlight,userId,noOfPassengers, setnoOfPassengers } = flightContext;
 
     const [submissionCount, setSubmissionCount] = useState(0);
    
   // Convert string to number
     const handleFormSubmit = (values) => {
-     // console.log('Received values:', values);
+      console.log('selected flight at multiple passengers:', selectedFlight);
 
       setSubmissionCount(prevCount => prevCount + 1);
       if (submissionCount >= noOfPassengers) {

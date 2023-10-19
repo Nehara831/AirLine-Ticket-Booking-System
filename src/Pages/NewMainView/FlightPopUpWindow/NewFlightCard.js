@@ -34,7 +34,7 @@ const ReusableCard = ({ flightData}) => {
 
   };
   const handleUpdateFlight = async () => {
-    const apiUrl = `http://localhost:8080/users/${userId}/passengersList`;
+    const apiUrl = `http://localhost:8080/users/${userId}/${flightData.flightId}/passengerList`;
     axios.get(apiUrl)
             .then((response) => {
              navigate(`/updatePassengerDetails`,{ state: { passengerDetails1: response.data } });

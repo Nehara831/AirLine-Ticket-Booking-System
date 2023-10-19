@@ -8,8 +8,9 @@ import './FlightPopUp.css'
 const FlightPopup = ({ onClose }) => {
 
 
-    const { userId,selectedFlight,bookedFlights,flightList, setFlightList } = useFlight();
+    const { userId,selectedFlight,bookedFlights,setBookedFlights, setFlightList } = useFlight();
     const[fly,setFly]=useState([]);
+    setBookedFlights(3);
 
     useEffect(() => {
         // Define the URL with the user ID as a query parameter
@@ -21,7 +22,7 @@ const FlightPopup = ({ onClose }) => {
             if (typeof response.data === 'object') {
               const dataArray = Object.values(response.data);
               setFly(dataArray);
-              console.log("response at the use effect",response.data);
+              console.log("response at the use effect for fly",fly);
             } else {
                 setFlightList(response.data);
 

@@ -63,7 +63,9 @@ const FlightSeatPicker = () => {
         const response = await axios.get(`http://localhost:8080/users/${userId}/${selectedFlight}/passengerIds`);
         if (response.status === 200) {
           setPassengers(response.data);
-           console.log('response from the users passengers',response.data);
+          console.log('selected flight at flight picker',selectedFlight);
+
+      //     console.log('response from the users passengers',response.data);
            
 
         }
@@ -75,6 +77,30 @@ const FlightSeatPicker = () => {
     // Call the fetchPassengers function to fetch data
     fetchPassengers();
   }, []);
+
+  useEffect(() => {
+
+
+    // Define a function to fetch passengers for the user
+    const fetchSeats = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8080/flights/${selectedFlight}/getSeatIds`);
+        console.log('seat getting for ',selectedFlight);
+        if (response.status === 200) {
+          setSelectedSeats(response.data);
+           console.log('response for the seats',response.data);
+           
+
+        }
+      } catch (error) {
+        console.error('Error fetching passengers:', error);
+      }
+    };
+
+    // Call the fetchPassengers function to fetch data
+    fetchSeats();
+  }, []);
+
 
   useEffect(() => {
     // This effect runs when passengers state changes

@@ -7,107 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { Table, Button } from 'antd';
 
 
-// const ReusableCard = ({ flightData}) => {
 
-//     const { userId,selectedFlight, setSelectedFlight } = useFlight();
-//     const navigate = useNavigate();
-
-
-    
-
-//     const handleAddFlight = async () => {
-//       try {
-//           const response = await fetch(`http://localhost:8080/users/${userId}/add-flight/${selectedFlight}`, {
-//               method: "POST",
-//               headers: {
-//                   "Content-Type": "application/json",
-//               },
-//           });
-
-//           if (response.ok) {
-//               console.log({userId});
-//               console.log({selectedFlight});
-//           } else {
-//               console.error("Error adding flight to user.");
-//           }
-//       } catch (error) {
-//           console.error("Error:", error);
-//       }
-//   };
-
-//     const handleButtonClick = () => {
-//         console.log(flightData);
-//         setSelectedFlight(flightData.flightId);
-//         handleAddFlight();
-//         navigate(`/passengerDetails`);
-      
-//       };
-//   return (
-//     <div className="Outer"> 
-//       <Card
-//   className="ReusableCard"
-//   style={{ width: "100%" ,height:"90%"}}
-//   title={
-//     <div className="CardTitle">
-//       {flightData.airlineName}
-//       <hr className="CardTitleDivider" /> {/* Add a horizontal line */}
-//     </div>
-//   }
-//   //extra={<Button type="primary" style={{ backgroundColor: '#605DEC', borderColor: '#605DEC' }} onClick={handleButtonClick}>Select Flight</Button>}
-// >
-//       <div className="CardContent">
-//         <div className="CardRow">
-//           {/* <div className="CardLabel">Duration:</div> */}
-//           <div className="CardValue">{flightData.departureTime}</div>
-//         </div>
-//         <div className="CardRow">
-//           {/* <div className="CardLabel">Departure Time:</div> */}
-//           <div className="CardValue">{flightData.arrivalTime}</div>
-//         </div>
-//         <div className="CardRow">
-//           {/* <div className="CardLabel">No of Stops:</div> */}
-//           <div className="CardValue">{flightData.duration}</div>
-//         </div>
-//         <div className="CardRow">
-//           {/* <div className="CardLabel">No of Stops:</div> */}
-//           <div className="CardValue" style={{ fontSize: '16px' }}>Price</div>
-//         </div>
-//       </div>
-      
-//       <div className="CardContent">
-//       <div className="ParallelRow">
-//           {/* <div className="CardLabel">Price:</div> */}
-//           <div className="CardValue">Departure</div>
-//         </div>
-//         <div className="ParallelRow">
-//           {/* <div className="CardLabel">Price:</div> */}
-//           <div className="CardValue">Arrival</div>
-//         </div>
-//         <div className="ParallelRow">
-//           {/* <div className="CardLabel">Arrival Time:</div> */}
-//           <div className="CardValue">{flightData.flightType}</div>
-//         </div>
-//         <div className="ParallelRow">
-//           {/* <div className="CardLabel">Flight Type:</div> */}
-//           <div className="CardValue"  style={{ fontSize: '20px' }}>Rs  {flightData.price} </div>
-//         </div>
-//       </div>
-//       <div className="CardContent">
-//         <Button type="primary" style={{marginLeft:'650px' ,backgroundColor: '#605DEC', borderColor: '#605DEC' }} onClick={handleButtonClick}>Select Flight</Button></div>
-//     </Card>
-//     </div>
-    
-//   );
-// };
-
-// ReusableCard.propTypes = {
-//   flightData: PropTypes.object.isRequired,
-//   onButtonClick: PropTypes.func.isRequired,
-//   className: PropTypes.string, 
-
-// };
-
-// export default ReusableCard;
 const FlightDataTable = ({ flightData }) => {
   const { userId,selectedFlight, setSelectedFlight,setBookedFlights } = useFlight();
   
@@ -195,7 +95,7 @@ const FlightDataTable = ({ flightData }) => {
         <Button
           type="primary"
           style={{ backgroundColor: '#605DEC', borderColor: '#605DEC' }}
-          onClick={() => handleSelectFlight(record.key)}
+          onClick={() => handleSelectFlight()}
         >
           Select Flight
         </Button>
@@ -203,8 +103,9 @@ const FlightDataTable = ({ flightData }) => {
     },
   ];
 
-  const handleSelectFlight = (flightId) => {
-    setSelectedFlight(flightId);
+  const handleSelectFlight = () => {
+    setSelectedFlight(flightData.flightId);
+    console.log('selected flight at the flight card',selectedFlight);
     navigate(`/passengerDetails`);
   };
 

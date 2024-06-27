@@ -35,10 +35,11 @@ pipeline {
             }
         }
 
-        stage('Deploy with Ansible') {
+       stage('Deploy with Ansible') {
             steps {
+                git 'https://github.com/Nehara831/ansible-playbooks.git'
                 sh '''
-                ansible-playbook -i hosts deploy.yml --limit frontend
+                ansible-playbook -i hosts deploy.yml --limit backend
                 '''
             }
         }
